@@ -18,7 +18,7 @@ The unique ID of almost everything. Generally it's a 16-character random string 
 
 The top-level structure representing the whole of a web app.
 
-```
+```javascript
 {
   widgets: {
     "TT9FRYJJC6ELQLLA": ...,
@@ -38,7 +38,7 @@ The top-level structure representing the whole of a web app.
 
 A widget, including its HTML and CSS code.
 
-```
+```javascript
 {
   uid: "TT9FRYJJC6ELQLLA",
   html: "<div>\n<form>...",
@@ -54,7 +54,7 @@ When we mention [Signal](#signal) in this specification, it can be a [Action](#a
 
 A general-purpose function.
 
-```
+```javascript
 {
   uid: "5TEJD01MWE4R5DG5",
   name: "ntdToUsd",
@@ -72,7 +72,7 @@ A general-purpose function.
 
 A parameter of certain [Action](#action).
 
-```
+```javascript
 {
   name: "ntd",
   valueRef: "GDTKI0ANM4IR48US",
@@ -86,7 +86,7 @@ A parameter of certain [Action](#action).
 
 An HTML element in a certain [Widget](#widget).
 
-```
+```javascript
 {
   uid: "P4P8TIOTU9LGDSBF",
   widgetRef: "TT9FRYJJC6ELQLLA",
@@ -102,7 +102,7 @@ An HTML element in a certain [Widget](#widget).
 
 An DOM Event of a certain [Element](#element) or `document`.
 
-```
+```javascript
 {
   uid: "AA9DH50KX81UES21",
   elementRef: "P4P8TIOTU9LGDSBF",
@@ -118,7 +118,7 @@ An DOM Event of a certain [Element](#element) or `document`.
 
 An attribute of a certain [Element](#element) or `document`.
 
-```
+```javascript
 {
   uid: "O6ZWLUYPPXN042SK",
   elementRef: "P4P8TIOTU9LGDSBF",
@@ -134,7 +134,7 @@ An attribute of a certain [Element](#element) or `document`.
 
 A constant.
 
-```
+```javascript
 {
   uid: "HMZ3G30E5CNQ7D2N",
   type: "String",
@@ -150,7 +150,7 @@ A constant.
 
 A rendered web app.
 
-```
+```javascript
 {
   files: [
     { path: "index.html", content: "<html>\n<body>\n..." },
