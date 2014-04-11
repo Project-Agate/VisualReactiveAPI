@@ -31,7 +31,7 @@ The top-level structure representing the whole of a web app.
 }
 ```
 
-+ **widgets**: A dictionary of [Widget](#Widget). For now it contains only one main widget.
++ **widgets**: A dictionary of [Widget](#widget). For now it contains only one main widget.
 + **signals**: The other stuffs besides HTML code. An element can be a [Action](#action), an [Element](#event), an [Event](#event), an [Attribute](#attribute) or a [Constant](#constant).
 
 ### Widget
