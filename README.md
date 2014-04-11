@@ -170,7 +170,7 @@ A rendered web app.
 
 ## Function
 
-### laodAndParseHtml(html)
+### loadAndParseHtml(html)
 
 To load and parse the HTML code of a widget.
 
