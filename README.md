@@ -12,7 +12,11 @@
 
 ### UID
 
-The unique ID of almost everything. Generally it's a 16-character random string that consists of numbers and uppercase letters, like `7AL0E139CJ31014A`. But there are some reserved UIDs, such as `document`(`document` of DOM), `timer`(simulating `setTimeout`), etc.
+The unique ID of almost everything. There are 3 kinds of UID:
+
+1. 16-character random string that consists of numbers and uppercase letters, like `7AL0E139CJ31014A`.
+2. User-defined HTML element ID. Must start with `#VRAC`, like `#VRAC-NTD-field`.
+3. Reserved UID. Such as `document`(`document` of DOM), `timer`(simulating `setTimeout`), `initial`. 
 
 ### Program
 
@@ -88,15 +92,15 @@ An HTML element in a certain [Widget](#widget).
 
 ```javascript
 {
-  uid: "P4P8TIOTU9LGDSBF",
+  uid: "#VRAC-ntd-field",
   widgetRef: "TT9FRYJJC6ELQLLA",
-  selector: ".P4P8TIOTU9LGDSBF",
+  selector: "#VRAC-ntd-field",
 }
 ```
 
-+ **uid**: [UID](#uid).
++ **uid**: [UID](#uid). Generally it's defined by user and with prefix `#VRAC`.
 + **widgetRef**: [UID](#uid). A reference to the widget this element belongs to.
-+ **selector**: String. The selector used to select this element in its parent widget. For now it's equal to `"." + uid`.
++ **selector**: String. The selector used to select this element in its parent widget. For now it's the same as `uid`.
 
 ### Event
 
@@ -161,3 +165,59 @@ A rendered web app.
 ```
 
 + **files**: A bunch of files that make up this web app.
+
+# Webview Context
+
+## Function
+
+### laodAndParseHtml(html)
+
+To load and parse the HTML code of a widget.
+
++ **html**: String. The HTML code of a widget.
+
+**return value**: An array of [UserElement](#userelement).
+
+### startSelecting()
+
+To start selecting element in the Webview. The [UserElement](#userelement) under the cursor would be highlighten.
+
+### stopSelecting()
+
+To stop [startSelecting()](#startSelecting).
+
+### getCurrentUserElement()
+
+Get the details of the innermost [UserElement](#userelement) under the cursor.
+
+**return value**: 
+
+```javascript
+{
+  uid: "#VRAC-NTD-field",
+  events: ['click', 'change', ...],
+  attributes: ['value', 'class', 'name', ...],
+}
+```
+
++ **uid**: The UID of current [UserElement](#userelement).
++ **events**: The events that current element can emit. See also [Event](#event).
++ **attributes**: The attributes that current element has. See also [Attribute](#attribute).
+
+## Data Structure
+
+### User Element
+
+```javascript
+{
+  uid: "#VRAC-NTD-field",
+  clientRect: {
+    left: 10,
+    top: 20,
+    right: 15,
+    bottom: 30,
+    width: 5,
+    height: 10,
+  },
+}
+```
