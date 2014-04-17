@@ -132,7 +132,7 @@ An attribute of a certain [Element](#element) or `document`.
 
 + **uid**: [UID](#uid).
 + **elementRef**: [UID](#uid). A reference to the element this attribute belongs to.
-+ **name**: String. The name of this attribute. Generally it should be one of standard [HTML attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes).
++ **name**: String. The name of this attribute. Generally it should be one of standard [HTML attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes) or `innerHTML`.
 
 ### Constant
 
