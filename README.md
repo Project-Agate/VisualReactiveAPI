@@ -177,7 +177,7 @@ A rendered web app.
 To load and parse the HTML code of a widget.
 
 + **html**: String. The HTML code of a widget.
-+ **html**: String. The CSS code of a widget.
++ **css**: String. The CSS code of a widget.
 
 **return value**: An array of [UserElement](#userelement).
 
