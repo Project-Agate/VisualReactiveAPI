@@ -172,7 +172,7 @@ A rendered web app.
 
 `var Webview = VRAC.Webview`
 
-### Webview.loadAndParseHtml(html)
+### Webview.loadAndParseHtml(html, css)
 
 To load and parse the HTML code of a widget.
 
