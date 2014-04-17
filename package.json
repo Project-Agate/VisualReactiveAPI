@@ -1,0 +1,22 @@
+{
+  "name": "vrac",
+  "version": "0.0.1",
+  "description": "## Functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/raincole/VisualReactiveAPI.git"
+  },
+  "author": "Raincole Lai (raincolee@gmail.com)",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/raincole/VisualReactiveAPI/issues"
+  },
+  "homepage": "https://github.com/raincole/VisualReactiveAPI",
+  "dependencies": {
+    "should": "~3.3.1"
+  }
+}
