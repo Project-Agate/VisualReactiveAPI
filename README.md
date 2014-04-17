@@ -189,7 +189,7 @@ To start selecting element in the Webview. The [UserElement](#userelement) under
 
 To stop [startSelecting()](#startSelecting).
 
-### Webview.getCurrentUserElement()
+### Webview.getCurrentElementDetail()
 
 Get the details of the innermost [UserElement](#userelement) under the cursor.
 
