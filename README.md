@@ -170,7 +170,9 @@ A rendered web app.
 
 ## Function
 
-### loadAndParseHtml(html)
+`var Webview = VRAC.Webview`
+
+### Webview.loadAndParseHtml(html)
 
 To load and parse the HTML code of a widget.
 
@@ -178,15 +180,15 @@ To load and parse the HTML code of a widget.
 
 **return value**: An array of [UserElement](#userelement).
 
-### startSelecting()
+### Webview.startSelecting()
 
 To start selecting element in the Webview. The [UserElement](#userelement) under the cursor would be highlighten.
 
-### stopSelecting()
+### Webview.stopSelecting()
 
 To stop [startSelecting()](#startSelecting).
 
-### getCurrentUserElement()
+### Webview.getCurrentUserElement()
 
 Get the details of the innermost [UserElement](#userelement) under the cursor.
 
