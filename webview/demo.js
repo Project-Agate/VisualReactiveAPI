@@ -4,4 +4,13 @@ $(document).ready(function() {
   var userElements = Webview.loadAndParseHTML(html, css);
 
   console.log(userElements);
+  
+  $('#start-selecting-btn').on('click', function() {
+    Webview.startSelecting();
+  });
+
+  $('#stop-selecting-btn').on('click', function() {
+    Webview.stopSelecting();
+  });
 });
+
