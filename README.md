@@ -15,7 +15,7 @@
 The unique ID of almost everything. There are 3 kinds of UID:
 
 1. 16-character random string that consists of numbers and uppercase letters, like `7AL0E139CJ31014A`.
-2. User-defined HTML element ID. Must start with `#VRAC`, like `#VRAC-NTD-field`.
+2. User-defined HTML element ID. Must start with `#VRAC`, like `#VRAC-TWD-field`.
 3. Reserved UID. Such as `document`(`document` of DOM), `timer`(simulating `setTimeout`), `initial`. 
 
 ### Program
@@ -46,7 +46,7 @@ A widget, including its HTML and CSS code.
 {
   uid: "TT9FRYJJC6ELQLLA",
   html: "<div>\n<form>...",
-  css: ".ntd-amount { width: 50px; }\n...",
+  css: ".twd-amount { width: 50px; }\n...",
 }
 ```
 
@@ -61,9 +61,9 @@ A general-purpose function.
 ```javascript
 {
   uid: "5TEJD01MWE4R5DG5",
-  name: "ntdToUsd",
+  name: "twdToUsd",
   parameters: [...],
-  body: "var rate = 30.1;\nreturn ntd / rate;\n",
+  body: "var rate = 30.1;\nreturn twd / rate;\n",
 }
 ```
 
@@ -78,7 +78,7 @@ A parameter of certain [Action](#action).
 
 ```javascript
 {
-  name: "ntd",
+  name: "twd",
   valueRef: "GDTKI0ANM4IR48US",
 }
 ```
@@ -92,9 +92,9 @@ An HTML element in a certain [Widget](#widget).
 
 ```javascript
 {
-  uid: "#VRAC-ntd-field",
+  uid: "#VRAC-twd-field",
   widgetRef: "TT9FRYJJC6ELQLLA",
-  selector: "#VRAC-ntd-field",
+  selector: "#VRAC-twd-field",
 }
 ```
 
@@ -159,7 +159,7 @@ A rendered web app.
   files: [
     { path: "index.html", content: "<html>\n<body>\n..." },
     { path: "main.js", content: "$(document).ready(function(){\n..." },
-    { path: "main.css", content: ".ntd-amount {\n..." }
+    { path: "main.css", content: ".twd-amount {\n..." }
   ]
 }
 ```
@@ -197,7 +197,7 @@ Get the details of the innermost [UserElement](#userelement) under the cursor.
 
 ```javascript
 {
-  uid: "#VRAC-NTD-field",
+  uid: "#VRAC-TWD-field",
   events: ['click', 'change', ...],
   attributes: ['value', 'class', 'name', ...],
 }
@@ -213,7 +213,7 @@ Get the details of the innermost [UserElement](#userelement) under the cursor.
 
 ```javascript
 {
-  uid: "#VRAC-NTD-field",
+  uid: "#VRAC-TWD-field",
   clientRect: {
     left: 10,
     top: 20,
