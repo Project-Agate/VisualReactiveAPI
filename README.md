@@ -187,7 +187,11 @@ To start selecting element in the Webview. The [UserElement](#userelement) under
 
 ### Webview.stopSelecting()
 
-To stop [startSelecting()](#startSelecting).
+To stop [startSelecting()](#startSelecting). **Note**: If you have selected an element, calling this doesn't clear the selection mask UI.
+
+### Webview.clearSelection()
+
+To clear the selection mask.
 
 ### Webview.getCurrentElementDetail()
 
