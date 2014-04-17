@@ -208,7 +208,7 @@ Get the details of the innermost [UserElement](#userelement) under the cursor.
 
 ## Data Structure
 
-### User Element
+### UserElement
 
 ```javascript
 {
