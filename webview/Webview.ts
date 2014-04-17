@@ -73,7 +73,6 @@ class Webview {
     $(Webview.widget).on('mousemove', function(event) {
       var element: Element = Webview.getCurrentElement();
       Webview.setSelectingMask(element);
-      console.log(Webview.getCurrentElementDetail());
     });
   }
 
