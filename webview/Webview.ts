@@ -35,10 +35,10 @@ class Webview {
   }
 
   static userElementFromElement(element: Element): UserElement {
-    return element ? null : {
+    return element ? {
       uid: $(element).attr('id'),
       clientRect: element.getBoundingClientRect(),
-    };
+    } : null;
   }
 
   static elementDetailFromElement(element: Element): ElementDetail {

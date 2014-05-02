@@ -31,10 +31,10 @@ var Webview = (function () {
     };
 
     Webview.userElementFromElement = function (element) {
-        return element ? null : {
+        return element ? {
             uid: $(element).attr('id'),
             clientRect: element.getBoundingClientRect()
-        };
+        } : null;
     };
 
     Webview.elementDetailFromElement = function (element) {
@@ -68,7 +68,6 @@ var Webview = (function () {
         $(Webview.widget).on('mousemove', function (event) {
             var element = Webview.getCurrentElement();
             Webview.setSelectingMask(element);
-            console.log(Webview.getCurrentElementDetail());
         });
     };
 
