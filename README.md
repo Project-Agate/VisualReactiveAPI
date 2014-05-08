@@ -130,12 +130,14 @@ An attribute of a certain [Element](#element) or `document`.
   type: "attribute",
   uid: "O6ZWLUYPPXN042SK",
   elementRef: "P4P8TIOTU9LGDSBF",
+  signalRef: "WZQ9KTF6KP9X64CW",
   name: "value",
 }
 ```
 
 + **uid**: [UID](#uid).
 + **elementRef**: [UID](#uid). A reference to the element this attribute belongs to.
++ **signalRef**: [UID](#uid). A reference to the singal which updates this attribute when changed. For "read-only" attributes, leave this as `null`.
 + **name**: String. The name of this attribute. Generally it should be one of standard [HTML attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes) or `innerHTML`.
 
 ### Constant
