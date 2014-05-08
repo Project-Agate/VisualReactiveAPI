@@ -1,0 +1,24 @@
+{
+  "action-toFloat": {
+    "uid": "action-toFloat",
+    "name": "toFloat",
+    "parameters": [
+      {
+        "name": "string",
+        "valueRef": null
+      }
+    ],
+    "body": "return parseFloat(string);",
+  },
+  "action-toString": {
+    "uid": "action-toString",
+    "name": "toString",
+    "parameters": [
+      {
+        "name": "number",
+        "valueRef": null
+      }
+    ],
+    "body": "return number.toString();",
+  } 
+}
