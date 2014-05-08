@@ -1,0 +1,123 @@
+{
+  "widgets": {
+    "TT9FRYJJC6ELQLLA": {
+      "uid": "TT9FRYJJC6ELQLLA",
+      "html": "<form class=\"clearfix\" id=\"amount-fields\">\n      <div id=\"exchange-rate\">\n        USD-TWD <span id=\"VRAC-exchange-rate\">0.00</span>\n      </div>\n      <label class=\"grid\">\n        USD:\n        <input id=\"VRAC-USD-field\" type=\"text\" value=\"0.00\" />\n      </label>\n      <label class=\"grid\">\n        TWD:\n        <input id=\"VRAC-TWD-field\" type=\"text\" value=\"0.00\" />\n      </label>\n    </form>",
+      "css": "#amount-fields {\n      width: 700px;\n      margin: auto;\n    }\n    #exchange-rate {\n      width: 700px;\n      margin: 0px auto 40px;\n      padding: 0 0 20px 0;     \n      font-size: 36px;  \n      font-weight: bold;\n      text-align: center;\n      border-bottom: 1px dashed grey;\n    }\n    #VRAC-exchange-rate {\n      margin: 0 16px;\n      letter-spacing: 2px;\n      color: red;\n      font-size: 40px;\n    }\n    .grid {\n      display: block;\n      float: left;\n      width: 50%;\n      text-align: center;\n      font-size: 20px;\n    }\n    .grid input {\n      font-size: 20px;\n    }"
+    }
+  },
+  "signals": {
+    "ET36T3YZJJNPRAR2": {
+      "type": "constant",
+      "uid": "ET36T3YZJJNPRAR2",
+      "valueType": "number",
+      "value": 30.1
+    },
+    "5TEJD01MWE4R5DG5": {
+      "type": "action",
+      "uid": "5TEJD01MWE4R5DG5",
+      "name": "twdToUsd",
+      "parameters": [
+        {
+          "name": "twd",
+          "valueRef": "GDTKI0ANM4IR48US"
+        },
+        {
+          "name": "rate",
+          "valueRef": "ET36T3YZJJNPRAR2"
+        }
+      ],
+      "body": "return twd / rate;\n"
+    },
+    "8KAN1O015CGA10BK": {
+      "type": "action",
+      "uid": "8KAN1O015CGA10BK",
+      "name": "usdToNtd",
+      "parameters": [
+        {
+          "name": "usd",
+          "valueRef": "Q7TXHCZY7PENCT9X"
+        },
+        {
+          "name": "rate",
+          "valueRef": "ET36T3YZJJNPRAR2"
+        }
+      ],
+      "body": "return usd * rate;\n"
+    },
+    "GDTKI0ANM4IR48US": {
+      "type": "action",
+      "uid": "GDTKI0ANM4IR48US",
+      "name": "toFloat",
+      "parameters": [
+        {
+          "name": "string",
+          "valueRef": "2MWK4DDREPEMFDND"
+        }
+      ],
+      "body": "return parseFloat(string);"
+    },
+    "Q7TXHCZY7PENCT9X": {
+      "type": "action",
+      "uid": "Q7TXHCZY7PENCT9X",
+      "name": "toFloat",
+      "parameters": [
+        {
+          "name": "string",
+          "valueRef": "ECZHJD9PW2MX3FZY"
+        }
+      ],
+      "body": "return parseFloat(string);"
+    },
+    "2MWK4DDREPEMFDND": {
+      "type": "attribute",
+      "uid": "2MWK4DDREPEMFDND",
+      "elementRef": "RF9ZDX6E99CKWJDJ",
+      "signalRef": "J3JDDJX6X47HVDAZ",
+      "name": "value"
+    },
+    "ECZHJD9PW2MX3FZY": {
+      "type": "attribute",
+      "uid": "ECZHJD9PW2MX3FZY",
+      "elementRef": "MJCJN9Z3VW4XAEGJ",
+      "signalRef": "QAGY4Z2NT3AQ7AQN",
+      "name": "value"
+    },
+    "J3JDDJX6X47HVDAZ": {
+      "type": "action",
+      "uid": "J3JDDJX6X47HVDAZ",
+      "name": "toString",
+      "parameters": [
+        {
+          "name": "number",
+          "valueRef": "8KAN1O015CGA10BK"
+        }
+      ],
+      "body": "return number.toString();"
+    },
+    "QAGY4Z2NT3AQ7AQN": {
+      "type": "action",
+      "uid": "QAGY4Z2NT3AQ7AQN",
+      "name": "toString",
+      "parameters": [
+        {
+          "name": "number",
+          "valueRef": "5TEJD01MWE4R5DG5"
+        }
+      ],
+      "body": "return number.toString();"
+    },
+    "RF9ZDX6E99CKWJDJ": {
+      "type": "element",
+      "uid": "RF9ZDX6E99CKWJDJ",
+      "widgetRef": "TT9FRYJJC6ELQLLA",
+      "selector": "#VRAC-twd-field"
+    },
+    "MJCJN9Z3VW4XAEGJ": {
+      "type": "element",
+      "uid": "MJCJN9Z3VW4XAEGJ",
+      "widgetRef": "TT9FRYJJC6ELQLLA",
+      "selector": "#VRAC-usd-field"
+    }
+  }
+}
