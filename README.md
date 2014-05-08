@@ -166,6 +166,12 @@ A rendered web app.
 
 + **files**: A bunch of files that make up this web app.
 
+# Predefine
+
+Please check following files:
+
+* [Action](https://github.com/raincole/VisualReactiveAPI/blob/master/predefines/actions.json)
+
 # Webview Context
 
 ## Function
