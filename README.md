@@ -60,6 +60,7 @@ A general-purpose function.
 
 ```javascript
 {
+  type: "action",
   uid: "5TEJD01MWE4R5DG5",
   name: "twdToUsd",
   parameters: [...],
@@ -92,6 +93,7 @@ An HTML element in a certain [Widget](#widget).
 
 ```javascript
 {
+  type: "element",
   uid: "#VRAC-twd-field",
   widgetRef: "TT9FRYJJC6ELQLLA",
   selector: "#VRAC-twd-field",
@@ -108,6 +110,7 @@ An DOM Event of a certain [Element](#element) or `document`.
 
 ```javascript
 {
+  type: "event",
   uid: "AA9DH50KX81UES21",
   elementRef: "P4P8TIOTU9LGDSBF",
   type: "click",
@@ -124,6 +127,7 @@ An attribute of a certain [Element](#element) or `document`.
 
 ```javascript
 {
+  type: "attribute",
   uid: "O6ZWLUYPPXN042SK",
   elementRef: "P4P8TIOTU9LGDSBF",
   name: "value",
@@ -140,14 +144,15 @@ A constant.
 
 ```javascript
 {
+  type: "constant",
   uid: "HMZ3G30E5CNQ7D2N",
-  type: "String",
+  valueType: "String",
   value: "post"
 }
 ```
 
 + **uid**: [UID](#uid).
-+ **type**: String. The type of this constant. 
++ **valueType**: String. The type of this constant. 
 + **value**: The value of this constant.
 
 ### App
@@ -165,6 +170,12 @@ A rendered web app.
 ```
 
 + **files**: A bunch of files that make up this web app.
+
+# Predefine
+
+Please check following files:
+
+* [Action](https://github.com/raincole/VisualReactiveAPI/blob/master/predefines/actions.json)
 
 # Webview Context
 
