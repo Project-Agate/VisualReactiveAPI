@@ -1,24 +1,24 @@
-{
-  "action-toFloat": {
-    "uid": "action-toFloat",
+[
+  {
+    "uid": "{{actionUID}}",
     "name": "toFloat",
     "parameters": [
       {
         "name": "string",
-        "valueRef": null
+        "valueRef": "{{param1UID}}"
       }
     ],
-    "body": "return parseFloat(string);",
+    "body": "return parseFloat(string);"
   },
-  "action-toString": {
-    "uid": "action-toString",
+  {
+    "uid": "{{actionUID}}",
     "name": "toString",
     "parameters": [
       {
         "name": "number",
-        "valueRef": null
+        "valueRef": "{{param1UID}}" 
       }
     ],
-    "body": "return number.toString();",
+    "body": "return number.toString();"
   } 
-}
+]
