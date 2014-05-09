@@ -177,7 +177,7 @@ A rendered web app.
 
 Please check following files:
 
-* [Action](https://github.com/raincole/VisualReactiveAPI/blob/master/predefines/actions.json)
+* [Action](https://github.com/raincole/VisualReactiveAPI/blob/master/renderer/predefines/actions.json)
 
 # Webview Context
 
