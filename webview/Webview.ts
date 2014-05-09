@@ -1,4 +1,4 @@
-/// <reference path="../definitions/jquery.d.ts" />
+/// <reference path="./definitions/jquery.d.ts" />
 /// <reference path="./lib/utilities.ts" />
 
 interface UserElement {

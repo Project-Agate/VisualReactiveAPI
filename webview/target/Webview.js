@@ -8,7 +8,7 @@ function isAncestor(parent, child) {
     }
     return false;
 }
-/// <reference path="../definitions/jquery.d.ts" />
+/// <reference path="./definitions/jquery.d.ts" />
 /// <reference path="./lib/utilities.ts" />
 
 var Webview = (function () {
