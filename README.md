@@ -45,8 +45,7 @@ A widget, including its HTML and CSS code.
 ```javascript
 {
   uid: "TT9FRYJJC6ELQLLA",
-  html: "<div>\n<form>...",
-  css: ".twd-amount { width: 50px; }\n...",
+  htmlPath: "/Users/raincole/project/component/index.html"
 }
 ```
 
