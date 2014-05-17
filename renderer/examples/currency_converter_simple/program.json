@@ -107,13 +107,11 @@
       "body": "return number.toString();"
     },
     "RF9ZDX6E99CKWJDJ": {
-      "type": "element",
       "uid": "RF9ZDX6E99CKWJDJ",
       "widgetRef": "TT9FRYJJC6ELQLLA",
       "selector": "#VRAC-twd-field"
     },
     "MJCJN9Z3VW4XAEGJ": {
-      "type": "element",
       "uid": "MJCJN9Z3VW4XAEGJ",
       "widgetRef": "TT9FRYJJC6ELQLLA",
       "selector": "#VRAC-usd-field"

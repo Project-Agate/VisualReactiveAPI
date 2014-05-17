@@ -39,7 +39,8 @@ module VRAC {
     valueRef: string;
   }
 
-  export interface Element extends Signal {
+  export interface Element {
+    uid: string;
     widgetRef: string;
     selector: string;
   }

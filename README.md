@@ -36,7 +36,7 @@ The top-level structure representing the whole of a web app.
 ```
 
 + **widgets**: A dictionary of [Widget](#widget). For now it contains only one main widget.
-+ **signals**: The other stuffs besides HTML code. An element can be a [Action](#action), an [Element](#event), an [Event](#event), an [Attribute](#attribute) or a [Constant](#constant).
++ **signals**: The other stuffs besides HTML code. An element can be a [Action](#action), an [Event](#event), an [Attribute](#attribute) or a [Constant](#constant).
 
 ### Widget
 
@@ -92,7 +92,6 @@ An HTML element in a certain [Widget](#widget).
 
 ```javascript
 {
-  type: "element",
   uid: "#VRAC-twd-field",
   widgetRef: "TT9FRYJJC6ELQLLA",
   selector: "#VRAC-twd-field",
