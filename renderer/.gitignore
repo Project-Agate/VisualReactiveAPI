@@ -1,3 +1,4 @@
 demo_build
 *js
 build
+!build.js
