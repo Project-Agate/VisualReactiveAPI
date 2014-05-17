@@ -112,13 +112,13 @@ An DOM Event of a certain [Element](#element) or `document`.
   type: "event",
   uid: "AA9DH50KX81UES21",
   elementRef: "P4P8TIOTU9LGDSBF",
-  type: "click",
+  eventType: "click",
 }
 ```
 
 + **uid**: [UID](#uid).
 + **elementRef**: [UID](#uid). A reference to the element this event is emitted from.
-+ **type**: String. The name of this event. Generally it should be equal to standard [Event.type](https://developer.mozilla.org/en-US/docs/Web/API/event.type).
++ **eventType**: String. The name of this event. Generally it should be equal to standard [Event.type](https://developer.mozilla.org/en-US/docs/Web/API/event.type).
 
 ### Attribute
 
