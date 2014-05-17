@@ -38,11 +38,11 @@ var Webview = (function () {
     };
 
     Webview.elementDetailFromElement = function (element) {
-        return element ? null : {
+        return element ? {
             uid: $(element).attr('id'),
             events: ['click', 'change'],
             attributes: ['value', 'innerHTML']
-        };
+        } : null;
     };
 
     Webview.offsetUserElement = function (userElement) {

@@ -45,8 +45,7 @@ A widget, including its HTML and CSS code.
 ```javascript
 {
   uid: "TT9FRYJJC6ELQLLA",
-  html: "<div>\n<form>...",
-  css: ".twd-amount { width: 50px; }\n...",
+  htmlPath: "/Users/raincole/project/component/index.html"
 }
 ```
 
@@ -177,7 +176,7 @@ A rendered web app.
 
 Please check following files:
 
-* [Action](https://github.com/raincole/VisualReactiveAPI/blob/master/predefines/actions.json)
+* [Action](https://github.com/raincole/VisualReactiveAPI/blob/master/renderer/predefines/actions.json)
 
 # Webview Context
 

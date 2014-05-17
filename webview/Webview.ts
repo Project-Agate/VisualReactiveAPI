@@ -42,11 +42,11 @@ class Webview {
   }
 
   static elementDetailFromElement(element: Element): ElementDetail {
-    return element ? null : {
+    return element ? {
       uid: $(element).attr('id'),
       events: ['click', 'change'],
       attributes: ['value', 'innerHTML'],
-    }
+    } : null; 
   }
 
   static offsetUserElement(userElement: UserElement): UserElement {
