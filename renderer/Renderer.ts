@@ -37,8 +37,6 @@ class Renderer {
       this.processSignal(this.signals[uid]);
     }
 
-    console.log(this.javascript);
-
     return {
       html: this.html,
       javascript: '$(document).ready(function() {\n' + this.javascript + '\n});', 
