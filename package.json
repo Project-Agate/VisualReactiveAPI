@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/raincole/VisualReactiveAPI",
   "dependencies": {
-    "should": "~3.3.1"
+    "handlebars": "~2.0.0",
+    "jsdom": "~0.10.5",
+    "jquery": "~2.1.0"
   }
 }
