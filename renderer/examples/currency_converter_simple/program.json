@@ -26,7 +26,7 @@
           "valueRef": "ET36T3YZJJNPRAR2"
         }
       ],
-      "body": "return twd / rate;\n"
+      "body": "return twd / rate;"
     },
     "8KAN1O015CGA10BK": {
       "type": "action",
@@ -42,7 +42,7 @@
           "valueRef": "ET36T3YZJJNPRAR2"
         }
       ],
-      "body": "return usd * rate;\n"
+      "body": "return usd * rate;"
     },
     "GDTKI0ANM4IR48US": {
       "type": "action",

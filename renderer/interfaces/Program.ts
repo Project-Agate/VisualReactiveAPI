@@ -25,6 +25,7 @@ module VRAC {
   export interface Signal {
     type: string;
     uid: string;
+    streamName?: string;
   }
 
   export interface Action extends Signal {
