@@ -94,6 +94,13 @@
       "elementRef": "MJCJN9Z3VW4XAEGJ",
       "name": "value"
     },
+    "7NEFT6W2RSZGMJ55": {
+      "type": "wAttribute",
+      "uid": "7NEFT6W2RSZGMJ55",
+      "elementRef": "GKSQPKQP4AGK3G4F",
+      "signalRef": "ET36T3YZJJNPRAR2",
+      "name": "innerHTML"
+    },
     "J3JDDJX6X47HVDAZ": {
       "type": "action",
       "uid": "J3JDDJX6X47HVDAZ",
@@ -127,6 +134,11 @@
       "uid": "MJCJN9Z3VW4XAEGJ",
       "widgetRef": "TT9FRYJJC6ELQLLA",
       "selector": "#VRAC-usd-field"
+    },
+    "GKSQPKQP4AGK3G4F": {
+      "uid": "GKSQPKQP4AGK3G4F",
+      "widgetRef": "TT9FRYJJC6ELQLLA",
+      "selector": "#VRAC-exchange-rate"
     }
   }
 }

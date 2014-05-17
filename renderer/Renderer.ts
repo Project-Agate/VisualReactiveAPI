@@ -113,27 +113,21 @@ class Renderer {
   }
 
   processWAttribute(attribute: VRAC.WAttribute): string {
-    // We need a better way to write general attributes, don't try do DRY W/RAttributes for now
-    if(attribute.name === 'value') { 
-      var streamName = 'attribute_' + attribute.name + '_' + attribute.uid;
-      var element = <VRAC.Element>this.signals[attribute.elementRef];
-      var selectingCode = '$("#' + element.widgetRef + ' ' + element.selector + '")';
-      var sourceSignal = this.signals[attribute.signalRef];
-      var signalStreamName = this.processSignal(sourceSignal);
+    var streamName = 'attribute_' + attribute.name + '_' + attribute.uid;
+    var element = <VRAC.Element>this.signals[attribute.elementRef];
+    var selectingCode = '$("#' + element.widgetRef + ' ' + element.selector + '")';
+    var sourceSignal = this.signals[attribute.signalRef];
+    var signalStreamName = this.processSignal(sourceSignal);
 
-      var attributeCode = this.wAttributeTemplate({
-        streamName: streamName,
-        seletingCode: selectingCode,
-        signalStreamName: signalStreamName,
-      });
+    var attributeCode = this.wAttributeTemplate({
+      seletingCode: selectingCode,
+      signalStreamName: signalStreamName,
+      attributeName: attribute.name,
+    });
 
-      this.addJavascriptCode(attributeCode);
+    this.addJavascriptCode(attributeCode);
 
-      return streamName;
-    }
-    else {
-      throw 'attribute "' + attribute.name + '" is not supported for WAttribute.';
-    }
+    return streamName;
   }
 
   processConstant(constant: VRAC.Constant): string {
