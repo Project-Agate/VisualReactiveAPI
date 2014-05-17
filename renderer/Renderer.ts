@@ -96,7 +96,6 @@ class Renderer {
     if(attribute.name === 'value') { 
       var streamName = 'attribute_' + attribute.name + '_' + attribute.uid;
       var element = <VRAC.Element>this.signals[attribute.elementRef];
-      debugger
       var selectingCode = '$("#' + element.widgetRef + ' ' + element.selector + '")';
 
       var attributeCode = this.rAttributeTemplate({
