@@ -1,7 +1,7 @@
 var exec = require('child_process').exec
 
 function build() {
-  exec('tsc --module "commonjs" demo.ts',
+  exec('tsc --module "commonjs" server.ts demo.ts',
     function (error, stdout, stderr) {
       console.log(stdout);
       if(stderr !== '')

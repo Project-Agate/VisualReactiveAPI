@@ -4,8 +4,11 @@
 /// <reference path="./interfaces/Program.ts" />
 
 class Renderer {
-  renderApp(program: VRAC.Program) {
-    return "alert('hello, world!')";
+  renderApp(program: VRAC.Program): VRAC.App {
+    return {
+      html: "",
+      javascript: "alert('hello world!')",
+    }
   }
 }
 

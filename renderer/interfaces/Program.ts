@@ -1,7 +1,12 @@
 module VRAC {
+  export interface App {
+    html: string;
+    javascript: string;
+  }
+
   export interface Program {
-    widget: Widget[];
-    signal: any[];
+    widgets: {[uid: string]: Widget};
+    signals: {[uid: string]: any};
   }
 
   export interface Widget {

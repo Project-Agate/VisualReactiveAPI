@@ -2,8 +2,7 @@
   "widgets": {
     "TT9FRYJJC6ELQLLA": {
       "uid": "TT9FRYJJC6ELQLLA",
-      "html": "<form class=\"clearfix\" id=\"amount-fields\">\n      <div id=\"exchange-rate\">\n        USD-TWD <span id=\"VRAC-exchange-rate\">0.00</span>\n      </div>\n      <label class=\"grid\">\n        USD:\n        <input id=\"VRAC-USD-field\" type=\"text\" value=\"0.00\" />\n      </label>\n      <label class=\"grid\">\n        TWD:\n        <input id=\"VRAC-TWD-field\" type=\"text\" value=\"0.00\" />\n      </label>\n    </form>",
-      "css": "#amount-fields {\n      width: 700px;\n      margin: auto;\n    }\n    #exchange-rate {\n      width: 700px;\n      margin: 0px auto 40px;\n      padding: 0 0 20px 0;     \n      font-size: 36px;  \n      font-weight: bold;\n      text-align: center;\n      border-bottom: 1px dashed grey;\n    }\n    #VRAC-exchange-rate {\n      margin: 0 16px;\n      letter-spacing: 2px;\n      color: red;\n      font-size: 40px;\n    }\n    .grid {\n      display: block;\n      float: left;\n      width: 50%;\n      text-align: center;\n      font-size: 20px;\n    }\n    .grid input {\n      font-size: 20px;\n    }"
+      "htmlPath": "/Users/raincole/homework/project/renderer/examples/currency_converter_simple/main.html"
     }
   },
   "signals": {

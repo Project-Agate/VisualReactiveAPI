@@ -6,7 +6,10 @@ var Renderer = (function () {
     function Renderer() {
     }
     Renderer.prototype.renderApp = function (program) {
-        return "alert('hello, world!')";
+        return {
+            html: "",
+            javascript: "alert('hello world!')"
+        };
     };
     return Renderer;
 })();
