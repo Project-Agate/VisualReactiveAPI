@@ -50,7 +50,12 @@ module VRAC {
     eventType: string;
   }
 
-  export interface Attribute extends Signal {
+  export interface RAttribute extends Signal {
+    elementRef: string;
+    name: string;
+  }
+
+  export interface WAttribute extends Signal {
     elementRef: string;
     signalRef: string;
     name: string;

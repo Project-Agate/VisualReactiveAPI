@@ -119,13 +119,30 @@ An DOM Event of a certain [Element](#element) or `document`.
 + **elementRef**: [UID](#uid). A reference to the element this event is emitted from.
 + **eventType**: String. The name of this event. Generally it should be equal to standard [Event.type](https://developer.mozilla.org/en-US/docs/Web/API/event.type).
 
-### Attribute
+### RAttribute
 
-An attribute of a certain [Element](#element) or `document`.
+An attribute of a certain [Element](#element) or `document`. It can only be used as output port.
 
 ```javascript
 {
-  type: "attribute",
+  type: "rAttribute",
+  uid: "O6ZWLUYPPXN042SK",
+  elementRef: "P4P8TIOTU9LGDSBF",
+  name: "value",
+}
+```
+
++ **uid**: [UID](#uid).
++ **elementRef**: [UID](#uid). A reference to the element this attribute belongs to.
++ **name**: String. The name of this attribute. Generally it should be one of standard [HTML attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes) or `innerHTML`.
+
+### WAttribute
+
+An attribute of a certain [Element](#element) or `document`. It can only be used as an input port.
+
+```javascript
+{
+  type: "wAttribute",
   uid: "O6ZWLUYPPXN042SK",
   elementRef: "P4P8TIOTU9LGDSBF",
   signalRef: "WZQ9KTF6KP9X64CW",
@@ -137,6 +154,7 @@ An attribute of a certain [Element](#element) or `document`.
 + **elementRef**: [UID](#uid). A reference to the element this attribute belongs to.
 + **signalRef**: [UID](#uid). A reference to the singal which updates this attribute when changed. For "read-only" attributes, leave this as `null`.
 + **name**: String. The name of this attribute. Generally it should be one of standard [HTML attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes) or `innerHTML`.
+
 
 ### Constant
 

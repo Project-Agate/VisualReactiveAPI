@@ -51,7 +51,7 @@
       "parameters": [
         {
           "name": "string",
-          "valueRef": "2MWK4DDREPEMFDND"
+          "valueRef": "QTKCJ4BEEHPY7FVP"
         }
       ],
       "body": "return parseFloat(string);"
@@ -63,23 +63,35 @@
       "parameters": [
         {
           "name": "string",
-          "valueRef": "ECZHJD9PW2MX3FZY"
+          "valueRef": "WV5Q4Q4EA3RDY7GH"
         }
       ],
       "body": "return parseFloat(string);"
     },
     "2MWK4DDREPEMFDND": {
-      "type": "attribute",
+      "type": "wAttribute",
       "uid": "2MWK4DDREPEMFDND",
       "elementRef": "RF9ZDX6E99CKWJDJ",
       "signalRef": "J3JDDJX6X47HVDAZ",
       "name": "value"
     },
+    "QTKCJ4BEEHPY7FVP": {
+      "type": "rAttribute",
+      "uid": "QTKCJ4BEEHPY7FVP",
+      "elementRef": "RF9ZDX6E99CKWJDJ",
+      "name": "value"
+    },
     "ECZHJD9PW2MX3FZY": {
-      "type": "attribute",
+      "type": "wAttribute",
       "uid": "ECZHJD9PW2MX3FZY",
       "elementRef": "MJCJN9Z3VW4XAEGJ",
       "signalRef": "QAGY4Z2NT3AQ7AQN",
+      "name": "value"
+    },
+    "WV5Q4Q4EA3RDY7GH": {
+      "type": "rAttribute",
+      "uid": "WV5Q4Q4EA3RDY7GH",
+      "elementRef": "MJCJN9Z3VW4XAEGJ",
       "name": "value"
     },
     "J3JDDJX6X47HVDAZ": {
