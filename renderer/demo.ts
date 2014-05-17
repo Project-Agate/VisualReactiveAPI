@@ -28,7 +28,7 @@ for(var uid in program.widgets) {
     exclude: function(filename, dir) {
       return path.join(dir, filename) === htmlPath;
     },
-  })
+  });
 };
 
 var app = renderer.renderApp(program);
