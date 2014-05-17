@@ -16,6 +16,6 @@ var exampleName: string = process.argv[2]
 var buildPath: string = path.normalize('demo_build')
 
 var program: VRAC.Program = JSON.parse(fs.readFileSync('examples/' + exampleName + '/program.json').toString());
-var app = renderer.renderApp(program);
+var app = renderer.render(program);
 
 projectBuilder.build(buildPath, program, app);

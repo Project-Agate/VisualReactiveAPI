@@ -24,7 +24,7 @@ class Renderer {
     });
   }
 
-  renderApp(program: VRAC.Program): VRAC.App {
+  render(program: VRAC.Program): VRAC.App {
     this.widgets = program.widgets;
     this.signals = program.signals;
 

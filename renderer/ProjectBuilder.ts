@@ -2,15 +2,18 @@
 /// <reference path="./definitions/wrench.d.ts" />
 /// <reference path="./definitions/handlebars.d.ts" />
 /// <reference path="./definitions/jquery.d.ts" />
+/// <reference path="./definitions/mkdirp.d.ts" />
 /// <reference path="./interfaces/Program.ts" />
 
 import fs = require('fs');
 import path = require('path');
 import wrench = require('wrench');
 import Handlebars = require('handlebars');
+import mkdirp = require('mkdirp');
 
 class ProjectBuilder {
   build(buildPath, program, app) {
+    mkdirp.sync(buildPath);
     for(var uid in program.widgets) {
       var widget = program.widgets[uid];
       var htmlPath = path.normalize(widget.htmlPath);
@@ -32,7 +35,10 @@ class ProjectBuilder {
     var template = Handlebars.compile(fs.readFileSync('templates/app_template.handlebars').toString());
     var appHtml = template(app)
 
-    fs.writeFileSync(path.join(buildPath, 'app.html'), appHtml);
+    var htmlPath = path.join(buildPath, 'app.html');
+    fs.writeFileSync(htmlPath, appHtml);
+
+    return htmlPath;
   }
 }
 
