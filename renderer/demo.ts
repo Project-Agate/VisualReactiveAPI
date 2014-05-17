@@ -31,6 +31,10 @@ for(var uid in program.widgets) {
   });
 };
 
+wrench.copyDirSyncRecursive('templates/lib', path.join(buildPath, 'lib'), {
+  forceDelete: true,
+});
+
 var app = renderer.renderApp(program);
 var template = Handlebars.compile(fs.readFileSync('templates/app_template.handlebars').toString());
 var appHtml = template(app)

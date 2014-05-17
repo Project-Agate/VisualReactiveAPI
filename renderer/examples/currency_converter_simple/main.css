@@ -1,0 +1,29 @@
+#amount-fields {
+  width: 700px;
+  margin: auto;
+}
+#exchange-rate {
+  width: 700px;
+  margin: 0px auto 40px;
+  padding: 0 0 20px 0;     
+  font-size: 36px;  
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px dashed gray;
+}
+#VRAC-exchange-rate {
+  margin: 0 16px;
+  letter-spacing: 2px;
+  color: red;
+  font-size: 40px;
+}
+.grid {
+  display: block;
+  float: left;
+  width: 50%;
+  text-align: center;
+  font-size: 20px;
+}
+.grid input {
+  font-size: 20px;
+}
