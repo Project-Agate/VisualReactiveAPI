@@ -41,7 +41,7 @@ class Renderer {
 
     return {
       html: this.html,
-      javascript: "alert('hello world!')",
+      javascript: '$(document).ready(function() {\n' + this.javascript + '\n});', 
     }
   }
 
@@ -95,9 +95,9 @@ class Renderer {
     // We need a better way to read general attributes, don't try do DRY W/RAttributes for now
     if(attribute.name === 'value') { 
       var streamName = 'attribute_' + attribute.name + '_' + attribute.uid;
-      var element = <VRAC.Element>this.signals[attribute.uid];
-      var widgetId = element.widgetRef;
-      var selectingCode = '$("#' + widgetId + ' ' + element.selector + '")';
+      var element = <VRAC.Element>this.signals[attribute.elementRef];
+      debugger
+      var selectingCode = '$("#' + element.widgetRef + ' ' + element.selector + '")';
 
       var attributeCode = this.rAttributeTemplate({
         streamName: streamName,
@@ -117,9 +117,8 @@ class Renderer {
     // We need a better way to write general attributes, don't try do DRY W/RAttributes for now
     if(attribute.name === 'value') { 
       var streamName = 'attribute_' + attribute.name + '_' + attribute.uid;
-      var element = <VRAC.Element>this.signals[attribute.uid];
-      var widgetId = element.widgetRef;
-      var selectingCode = '$("#' + widgetId + ' ' + element.selector + '")';
+      var element = <VRAC.Element>this.signals[attribute.elementRef];
+      var selectingCode = '$("#' + element.widgetRef + ' ' + element.selector + '")';
       var sourceSignal = this.signals[attribute.signalRef];
       var signalStreamName = this.processSignal(sourceSignal);
 
@@ -139,7 +138,19 @@ class Renderer {
   }
 
   processConstant(constant: VRAC.Constant): string {
-    return "5";
+    var streamName = 'constant_' + constant.uid;
+    var valueType = constant.valueType;
+    var value = constant.value;
+    var constantSource = 'var {{{streamName}}} = Bacon.constant({{{value}}});';
+    var constantTemplate = Handlebars.compile(constantSource);
+    var constantCode = constantTemplate({
+      streamName: streamName,
+      value: valueType == 'string' ? '"' + value + '"' : value,
+    });
+
+    this.addJavascriptCode(constantCode);
+
+    return streamName;
   }
 
   addJavascriptCode(code: string) {

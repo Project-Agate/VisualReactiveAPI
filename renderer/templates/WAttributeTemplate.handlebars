@@ -1,9 +1,9 @@
 var {{{streamName}}};
-function() {
+(function() {
   var $element = {{{seletingCode}}};
   var type = $element.prop("type");
   var tagName = $element.prop("tagName");
-  if(tagName === "input") {
+  if(tagName === "INPUT") {
     switch(type) {
       case "text":
         {{{streamName}}} = Bacon.$.textFieldValue($element);
@@ -22,4 +22,4 @@ function() {
   else {
     throw "tag \"" + tagName + "\" is not supported for RAttribute.";
   }
-}();
+})();
