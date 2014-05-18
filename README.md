@@ -208,7 +208,7 @@ Please check following files:
 
 # Webview Context
 
-Just run [jquery.min.js](blob/master/webview/lib/jquery.min.js) and [Webview.js](/blob/master/webview/target/Webview.js) in Webview context after loading user-defined widget.
+Just run [jquery.min.js](webview/lib/jquery.min.js) and [Webview.js](webview/target/Webview.js) in Webview context after loading user-defined widget.
 
 ## Function
 
