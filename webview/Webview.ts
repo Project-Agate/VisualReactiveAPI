@@ -20,18 +20,9 @@ class Webview {
   static selectingMask: Element;
   static selecting: boolean = false;
 
-  static container() { return $('#main-widget-container') }
-
-  static loadAndParseHTML(html: string, css: string): Array<UserElement> {
-    var widget: Element = Webview.widget = $(html).get(0)
-    var $style: JQuery = $('<style type="text/css">').html(css);
-
-    Webview.container().append(widget);
-    $('head').append($style);
-
-    var elements: Element[] = Webview.elements = $('[id^=VRAC]').toArray();
-
-    return elements.map(Webview.userElementFromElement).map(Webview.offsetUserElement);
+  static init() {
+    Webview.widget = $('body').children()[0];
+    Webview.elements = $('[id^=VRAC]').toArray();
   }
 
   static userElementFromElement(element: Element): UserElement {
@@ -140,4 +131,7 @@ $(document).on('mousemove', function(event) {
   Webview.mouseX = event.clientX;
   Webview.mouseY = event.clientY;
 });
+
+Webview.init();
+Webview.startSelecting();
 

@@ -14,20 +14,9 @@ function isAncestor(parent, child) {
 var Webview = (function () {
     function Webview() {
     }
-    Webview.container = function () {
-        return $('#main-widget-container');
-    };
-
-    Webview.loadAndParseHTML = function (html, css) {
-        var widget = Webview.widget = $(html).get(0);
-        var $style = $('<style type="text/css">').html(css);
-
-        Webview.container().append(widget);
-        $('head').append($style);
-
-        var elements = Webview.elements = $('[id^=VRAC]').toArray();
-
-        return elements.map(Webview.userElementFromElement).map(Webview.offsetUserElement);
+    Webview.init = function () {
+        Webview.widget = $('body').children()[0];
+        Webview.elements = $('[id^=VRAC]').toArray();
     };
 
     Webview.userElementFromElement = function (element) {
@@ -136,3 +125,6 @@ $(document).on('mousemove', function (event) {
     Webview.mouseX = event.clientX;
     Webview.mouseY = event.clientY;
 });
+
+Webview.init();
+Webview.startSelecting();
