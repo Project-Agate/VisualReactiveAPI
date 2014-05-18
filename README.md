@@ -208,18 +208,11 @@ Please check following files:
 
 # Webview Context
 
+Just run [jquery.min.js](blob/master/webview/lib/jquery.min.js) and [Webview.js](/blob/master/webview/target/Webview.js) in Webview context after loading user-defined widget.
+
 ## Function
 
 `var Webview = VRAC.Webview`
-
-### Webview.loadAndParseHtml(html, css)
-
-To load and parse the HTML code of a widget.
-
-+ **html**: String. The HTML code of a widget.
-+ **css**: String. The CSS code of a widget.
-
-**return value**: An array of [UserElement](#userelement).
 
 ### Webview.startSelecting()
 
