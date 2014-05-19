@@ -27,6 +27,7 @@ class Renderer {
   render(program: VRAC.Program): VRAC.App {
     this.widgets = program.widgets;
     this.signals = program.signals;
+    this.html = this.javascript = '';
 
     for(var uid in this.widgets) {
       var widget = this.widgets[uid];

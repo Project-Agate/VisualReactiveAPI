@@ -8,8 +8,6 @@ var bodyParser = require('body-parser')
 import path = require('path');
 
 var app = express();
-var renderer: Renderer = new Renderer();
-var projectBuilder: ProjectBuilder = new ProjectBuilder();
 
 app.use(bodyParser())
 app.use('/build', express.static(__dirname + '/build'));
@@ -19,12 +17,14 @@ app.get('/', function(req, res){
 });
 
 app.post('/compile', function(req, res) {
+  var renderer = new Renderer();
+  var projectBuilder = new ProjectBuilder();
   var program = req.body;
-  var app = renderer.render(program);
+  var renderedApp = renderer.render(program);
   var buildId = Date.now().toString();
   var buildPath = path.join('build', buildId);
 
-  var htmlPath = projectBuilder.build(buildPath, program, app);
+  var htmlPath = projectBuilder.build(buildPath, program, renderedApp);
 
   res.send('/' + htmlPath);
 });
