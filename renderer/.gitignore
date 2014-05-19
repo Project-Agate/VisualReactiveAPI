@@ -1,4 +1,6 @@
 demo_build
-*js
 build
+*.js
 !build.js
+!templates/**/*
+
