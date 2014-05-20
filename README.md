@@ -74,7 +74,7 @@ A general-purpose function.
   uid: "5TEJD01MWE4R5DG5",
   name: "twdToUsd",
   parameters: [...],
-  body: "var rate = 30.1;\nreturn twd / rate;\n",
+  body: "function(twd){var rate = 30.1;\nreturn twd / rate;\n}",
 }
 ```
 
