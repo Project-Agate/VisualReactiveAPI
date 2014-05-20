@@ -26,7 +26,7 @@
           "valueRef": "ET36T3YZJJNPRAR2"
         }
       ],
-      "body": "function(twd, rate){return twd / rate;}"
+      "body": "return twd / rate;"
     },
     "8KAN1O015CGA10BK": {
       "type": "action",
@@ -42,7 +42,7 @@
           "valueRef": "ET36T3YZJJNPRAR2"
         }
       ],
-      "body": "function(usd, rate){return usd * rate;}"
+      "body": "return usd * rate;"
     },
     "GDTKI0ANM4IR48US": {
       "type": "action",
@@ -54,7 +54,7 @@
           "valueRef": "QTKCJ4BEEHPY7FVP"
         }
       ],
-      "body": "function(string) {return parseFloat(string);}"
+      "body": "return parseFloat(string);"
     },
     "Q7TXHCZY7PENCT9X": {
       "type": "action",
@@ -66,7 +66,7 @@
           "valueRef": "WV5Q4Q4EA3RDY7GH"
         }
       ],
-      "body": "function(string){return parseFloat(string);}"
+      "body": "return parseFloat(string);"
     },
     "2MWK4DDREPEMFDND": {
       "type": "wAttribute",
@@ -111,7 +111,7 @@
           "valueRef": "8KAN1O015CGA10BK"
         }
       ],
-      "body": "function(number){return number.toString();}"
+      "body": "return number.toString();"
     },
     "QAGY4Z2NT3AQ7AQN": {
       "type": "action",
@@ -123,7 +123,7 @@
           "valueRef": "5TEJD01MWE4R5DG5"
         }
       ],
-      "body": "function(number){return number.toString();}"
+      "body": "return number.toString();"
     },
     "RF9ZDX6E99CKWJDJ": {
       "uid": "RF9ZDX6E99CKWJDJ",
