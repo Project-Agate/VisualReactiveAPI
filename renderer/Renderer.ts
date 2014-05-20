@@ -63,12 +63,7 @@ class Renderer {
 
   processAction(action: VRAC.Action): string {
     var streamName = 'action_' + action.name + '_' + action.uid;
-    var functionSource = 'function({{{commaList parameterNames}}}) {\n  {{{body}}}  \n}';
-    var functionTemplate = Handlebars.compile(functionSource);
-    var functionCode = functionTemplate({
-      parameterNames: action.parameters.map((p) => { return p.name; }),
-      body: action.body,
-    });
+    var functionCode = action.body;
 
     var parameterStreamNames = action.parameters.map((p) => {
       return this.processSignal(this.signals[p.valueRef]);
