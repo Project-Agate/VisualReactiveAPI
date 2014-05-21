@@ -3,4 +3,5 @@ build
 *.js
 !build.js
 !templates/**/*
+!examples/*/*.js
 
