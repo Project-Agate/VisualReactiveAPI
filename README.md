@@ -56,9 +56,14 @@ A widget, including its HTML and CSS code.
 ```javascript
 {
   uid: "TT9FRYJJC6ELQLLA",
-  htmlPath: "/Users/raincole/project/component/index.html"
+  htmlPath: "/Users/raincole/project/component/index.html",
+  renderToRef: "#VRAC-profile"
 }
 ```
+
++ **uid**: [UID](#uid).
++ **htmlPath**: String. The absolute path to the HTML file of this widget.
++ **renderToRef**: [UID](#uid). A reference to the placholder or collection this widget will replace.
 
 ### Signal
 
@@ -82,6 +87,25 @@ A general-purpose function.
 + **name**: (optional) String. The name of this action.
 + **parameters**: An array of [Parameter](#parameter)s. The parameters of this action.
 + **body**: String. The body of this action.
+
+### Demuxer
+
+A special [Action](#action) that separate an signal into multiple ones.
+
+```javascript
+{
+  inputRef: "UD0MH7GT7W7ZA0W4",
+  outputs: [
+    {uid: "JQXGSDQVCU25M60S", key: "date"},
+    {uid: "O3MDS0WFTYKLU2PI", key: "toString()"},
+  ]
+}
+```
+
++ **inputRef**: [UID](#uid). A reference to the signal that will be separated.
++ **outputs**:
+  + **uid**: [UID](#uid).
+  + **key**: String. The key used to map the input signal to the output. For example, if the value of input is `{foo: "1", bar: "2"} and the key is `foo`, the value of output will be `"1"`.
 
 ### Parameter
 
@@ -112,6 +136,29 @@ An HTML element in a certain [Widget](#widget).
 + **uid**: [UID](#uid). Generally it's defined by user and with prefix `#VRAC`.
 + **widgetRef**: [UID](#uid). A reference to the widget this element belongs to.
 + **selector**: String. The selector used to select this element in its parent widget. For now it's the same as `uid`.
+
+### Placeholder
+
+In parent widget, a placeholder that will be replaced by child widget 
+
+```javascript
+  type: "placeholder",
+  uid: "#VRAC-profile",
+  widgetRef: "0WO8K4R55MPIE7BT",
+  selector: "#VRAC-profile",
+}
+```
+
+Example:
+
+```html
+<placeholder id="#VRAC-profile"/>
+```
+
++ **uid**: [UID](#uid). Generally it's defined by user and with prefix `#VRAC`.
++ **widgetRef**: [UID](#uid). A reference to the widget this element belongs to.
++ **selector**: String. The selector used to select this element in its parent widget. For now it's the same as `uid`.
+
 
 ### Event
 
@@ -184,6 +231,26 @@ A constant.
 + **valueType**: String. The type of this constant. 
 + **value**: The value of this constant.
 
+### Collection
+
+A collection of views that will be re-rendered every time the data binded to it changes. 
+
+```javascript
+{
+  type: "collection",
+  uid: "W8HVUI29DI3YGQML",
+  dataRef: "8U6G2YACX752X1A8",
+  renderToRef: "4OLXEQASJSLBS5NB",
+}
+
+```
+
+**Note**: When a collection is used as input of an [Action](#action), it pops one of its members at a time, not the whole array.
+
++ **uid**: [UID](#uid).
++ **dataRef**: [UID](#uid). A reference to the data source of this collection. Most of the time, it should point to a [Action](#action) returning an array.
++ **renderToRef**: [UID](#uid). A reference to the placholder or collection this widget will replace.
+
 ### App
 
 A rendered web app.
@@ -235,6 +302,7 @@ Get the details of the innermost [UserElement](#userelement) under the cursor.
 ```javascript
 {
   uid: "#VRAC-TWD-field",
+  isPlaceholder: false,
   events: ['click', 'change', ...],
   attributes: ['value', 'class', 'name', ...],
 }
