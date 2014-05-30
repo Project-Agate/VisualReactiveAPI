@@ -143,6 +143,7 @@ An HTML element in a certain [Widget](#widget).
 In parent widget, a placeholder that will be replaced by child widget 
 
 ```javascript
+{
   type: "placeholder",
   uid: "#VRAC-profile",
   widgetRef: "0WO8K4R55MPIE7BT",
