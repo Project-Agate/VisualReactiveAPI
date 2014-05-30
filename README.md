@@ -94,6 +94,7 @@ A special [Action](#action) that separate an signal into multiple ones.
 
 ```javascript
 {
+  type: "demuxer",
   inputRef: "UD0MH7GT7W7ZA0W4",
   outputs: [
     {uid: "JQXGSDQVCU25M60S", key: "date"},
