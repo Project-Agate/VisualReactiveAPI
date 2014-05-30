@@ -311,6 +311,7 @@ Get the details of the innermost [UserElement](#userelement) under the cursor.
 ```
 
 + **uid**: The UID of current [UserElement](#userelement).
++ **isPlaceholder**: Boolean. Is this element a [Placholder](#placeholder).
 + **events**: The events that current element can emit. See also [Event](#event).
 + **attributes**: The attributes that current element has. See also [Attribute](#attribute).
 
