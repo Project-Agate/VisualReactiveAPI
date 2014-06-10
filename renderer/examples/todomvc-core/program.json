@@ -1,0 +1,28 @@
+{
+  "widgets": {
+    "TT9FRYJJC6ELQLLA": {
+      "uid": "TT9FRYJJC6ELQLLA",
+      "htmlPath": "/Users/raincole/homework/project/renderer/examples/todomvc-core/layout.html",
+      "renderToRef": "document"
+    },
+    "BQXUVGIJJP2S0LMO": {
+      "uid": "BQXUVGIJJP2S0LMO",
+      "htmlPath": "/Users/raincole/homework/project/renderer/examples/todomvc-core/footer.html",
+      "renderToRef": "3R0VCDXY75B6VENX"
+    }
+  },
+  "signals": {
+    "0WO8K4R55MPIE7BT": {
+      "type": "placeholder",
+      "uid": "#VRAC-todo-list",
+      "widgetRef": "TT9FRYJJC6ELQLLA",
+      "selector": "#VRAC-todo-list"
+    },
+    "3R0VCDXY75B6VENX": {
+      "type": "placeholder",
+      "uid": "#VRAC-footer",
+      "widgetRef": "TT9FRYJJC6ELQLLA",
+      "selector": "#VRAC-footer"
+    }
+  }
+}

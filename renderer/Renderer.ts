@@ -1,20 +1,24 @@
 /// <reference path="./definitions/jquery.d.ts" />
 /// <reference path="./definitions/handlebars.d.ts" />
 /// <reference path="./definitions/templates.d.ts" />
-/// <reference path="./interfaces/Program.ts" />
 
 import fs = require('fs');
 import Handlebars = require('handlebars');
 
+import VRAC = require('./interfaces/VRAC');
+import Widget = require('./interfaces/Widget');
+
 class Renderer {
-  widgets: VRAC.Widgets;
-  signals: VRAC.Signals;
+  rootWidget: Widget;
+  widgets: VRAC.Widgets = {};
+  signals: VRAC.Signals = {};
   javascript: string = '';
   html: string = '';
-  rAttributeSource: string = fs.readFileSync('templates/RAttributeTemplate.handlebars').toString();
-  wAttributeSource: string = fs.readFileSync('templates/WAttributeTemplate.handlebars').toString();
-  rAttributeTemplate: HandlebarsTemplateDelegate = Handlebars.compile(this.rAttributeSource);
-  wAttributeTemplate: HandlebarsTemplateDelegate = Handlebars.compile(this.wAttributeSource);
+
+  private rAttributeSource: string = fs.readFileSync('templates/RAttributeTemplate.handlebars').toString();
+  private wAttributeSource: string = fs.readFileSync('templates/WAttributeTemplate.handlebars').toString();
+  private rAttributeTemplate: HandlebarsTemplateDelegate = Handlebars.compile(this.rAttributeSource);
+  private wAttributeTemplate: HandlebarsTemplateDelegate = Handlebars.compile(this.wAttributeSource);
 
   constructor() {
     Handlebars.registerHelper('commaList', function(object: any[]) {
@@ -24,24 +28,35 @@ class Renderer {
     });
   }
 
-  render(program: VRAC.Program): VRAC.App {
-    this.widgets = program.widgets;
-    this.signals = program.signals;
+  render(rawProgram: Object): VRAC.App {
+    var rawWidgets = rawProgram['widgets'];
+    for(var uid in rawWidgets) {
+      this.widgets[uid] = new Widget(rawWidgets[uid]);
+    }
+    this.signals = rawProgram['signals'];
     this.html = this.javascript = '';
 
     for(var uid in this.widgets) {
       var widget = this.widgets[uid];
-      this.html += '<div id="' + uid + '">' + fs.readFileSync(widget.htmlPath) + '</div>';
+      if(widget.isRoot()) {
+        this.rootWidget = widget;
+      }
+      else {
+        var placeholder = <VRAC.Placeholder>this.signals[widget.renderToRef];
+        var parentWidget = this.widgets[placeholder.widgetRef];
+        parentWidget.childWidgets[placeholder.selector] = widget;
+      }
     }
 
     for(var uid in this.signals) {
       this.processSignal(this.signals[uid]);
     }
 
-    return {
-      html: this.html,
-      javascript: '$(document).ready(function() {\n' + this.javascript + '\n});', 
-    }
+    var appFiles: VRAC.App = {};
+    var rootWidget = this.rootWidget;
+    rootWidget.renderTree(this.javascript, appFiles);
+
+    return appFiles;
   }
 
   processSignal(signal: VRAC.Signal): string {

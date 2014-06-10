@@ -154,7 +154,7 @@ In parent widget, a placeholder that will be replaced by child widget
 Example:
 
 ```html
-<placeholder id="#VRAC-profile"/>
+<placeholder id="VRAC-profile"/>
 ```
 
 + **uid**: [UID](#uid). Generally it's defined by user and with prefix `#VRAC`.
