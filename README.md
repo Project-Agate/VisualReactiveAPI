@@ -250,7 +250,7 @@ A mutable data source. It holds its current value and pop a new value when a mut
 
 ```javascript
 {
-  type: "mutable",
+  type: "dataSource",
   uid: "VU977EDJ16NIWAI8",
   initialValue: [],
   mutatorRef: "2MXHYT6EOTBVF9A0"
