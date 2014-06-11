@@ -1,5 +1,4 @@
-var doc = document.currentScript.ownerDocument;
-var placeholder = doc.querySelector("{{{selector}}}");
-var shadow = placeholder.createShadowRoot();
-var importedContent = doc.querySelector('link[href="{{{childFilePath}}}"]').import.documentElement;
+shadow = widget.querySelector("{{{selector}}}").createShadowRoot();
+importedContent = doc.querySelector('link[href="{{{childFilePath}}}"]').import['_widget'];
+console.log('appending {{{childUID}}}');
 shadow.appendChild(importedContent);

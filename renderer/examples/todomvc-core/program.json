@@ -3,26 +3,84 @@
     "TT9FRYJJC6ELQLLA": {
       "uid": "TT9FRYJJC6ELQLLA",
       "htmlPath": "/Users/raincole/homework/project/renderer/examples/todomvc-core/layout.html",
-      "renderToRef": "document"
+      "renderToRef": "document",
+      "isCollection": false
     },
     "BQXUVGIJJP2S0LMO": {
       "uid": "BQXUVGIJJP2S0LMO",
       "htmlPath": "/Users/raincole/homework/project/renderer/examples/todomvc-core/footer.html",
-      "renderToRef": "3R0VCDXY75B6VENX"
+      "renderToRef": "#VRAC-footer",
+      "isCollection": false
+    },
+    "203RWMERVJLAFPVL": {
+      "uid": "203RWMERVJLAFPVL",
+      "htmlPath": "/Users/raincole/homework/project/renderer/examples/todomvc-core/item.html",
+      "renderToRef": "#VRAC-todo-list",
+      "isCollection": true
     }
   },
   "signals": {
-    "0WO8K4R55MPIE7BT": {
+    "#VRAC-todo-list": {
       "type": "placeholder",
       "uid": "#VRAC-todo-list",
       "widgetRef": "TT9FRYJJC6ELQLLA",
       "selector": "#VRAC-todo-list"
     },
-    "3R0VCDXY75B6VENX": {
+    "#VRAC-footer": {
       "type": "placeholder",
       "uid": "#VRAC-footer",
       "widgetRef": "TT9FRYJJC6ELQLLA",
       "selector": "#VRAC-footer"
-    }
+    },
+
+    ".VRAC-item-title-label": {
+      "uid": ".VRAC-item-title-label",
+      "widgetRef": "203RWMERVJLAFPVL",
+      "selector": ".VRAC-item-title-label"
+    },
+    "38EWS67KAW3ROIRE": {
+      "type": "wAttribute",
+      "uid": "38EWS67KAW3ROIRE",
+      "elementRef": ".VRAC-item-title-label",
+      "signalRef": "JQXGSDQVCU25M60S",
+      "name": "innerHTML"
+    },
+    "WZQ9KTF6KP9X64CW": {
+      "type": "demuxer",
+      "uid": "WZQ9KTF6KP9X64CW",
+      "inputRef": "AMENFLFNMJT97FLQ",
+      "outputs": [
+        {"uid": "JQXGSDQVCU25M60S", "key": "title"}
+      ],
+      "isOnArray": true
+    },
+
+    "AMENFLFNMJT97FLQ": {
+      "type": "dataSource",
+      "uid": "AMENFLFNMJT97FLQ",
+      "initialValue": [],
+      "mutatorRefs": ["N9SRTOW04U3TBGU4"]
+    },
+
+    "N9SRTOW04U3TBGU4": {
+      "type": "action",
+      "uid": "N9SRTOW04U3TBGU4",
+      "name": "newTodoKeyPressHandler",
+      "parameters": [
+        {"name": "e", "valueRef": "AA9DH50KX81UES21" }
+      ],
+      "body": "var ENTER_KEY=13;\nvar input=e.target;\nvar title=input.value;\nif(e.which === ENTER_KEY && title !==''){\ninput.value="";\nreturn function(data){\ndata.push({title: title});\nreturn data;\n};\n}"
+    },
+    "AA9DH50KX81UES21": {
+      "type": "event",
+      "uid": "AA9DH50KX81UES21",
+      "elementRef": "#VRAC-new-todo",
+      "eventType": "keypress",
+    },
+    "#VRAC-new-todo": {
+      "uid": "#VRAC-new-todo",
+      "widgetRef": "TT9FRYJJC6ELQLLA",
+      "selector": "#VRAC-new-todo"
+    },
   }
 }

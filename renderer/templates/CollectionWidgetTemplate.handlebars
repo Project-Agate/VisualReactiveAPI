@@ -1,0 +1,11 @@
+doc['_render'] = function(itemCount) {
+  var collection = window.widgetDOMs["{{{uid}}}"].querySelector('[vrac-type="collection"]');
+  while(collection.children.length > itemCount) {
+    collection.removeChild(collection.lastChild);
+  }
+  var viewTemplate = collection.querySelector('template[vrac-type="view"]');
+  while(collection.children.length < itemCount) {
+    var view = viewTemplate.content.cloneNode(true);
+    collection.appendChild(view);
+  }
+};
