@@ -57,13 +57,17 @@ A widget, including its HTML and CSS code.
 {
   uid: "TT9FRYJJC6ELQLLA",
   htmlPath: "/Users/raincole/project/component/index.html",
-  renderToRef: "#VRAC-profile"
+  renderToRef: "#VRAC-profile",
+  isCollection: false
 }
 ```
 
 + **uid**: [UID](#uid).
 + **htmlPath**: String. The absolute path to the HTML file of this widget.
 + **renderToRef**: [UID](#uid). A reference to the placholder or collection this widget will replace.
++ **isCollection**: Boolean. Whether this widget is a collection? If so, it will be rendered multiple times.
+
+As [Widget](#widget).
 
 ### Signal
 
@@ -232,26 +236,6 @@ A constant.
 + **uid**: [UID](#uid).
 + **valueType**: String. The type of this constant. 
 + **value**: The value of this constant.
-
-### Collection
-
-A collection of views that will be re-rendered every time the data binded to it changes. 
-
-```javascript
-{
-  type: "collection",
-  uid: "W8HVUI29DI3YGQML",
-  dataRef: "8U6G2YACX752X1A8",
-  templateRef: "C168G8JO5RRD6WIT",
-  renderToRef: "4OLXEQASJSLBS5NB",
-}
-
-```
-
-+ **uid**: [UID](#uid).
-+ **dataRef**: [UID](#uid). A reference to the data source of this collection. Most of the time, it should point to a [Action](#action) returning an array.
-+ **templateRef**: [UID](#uid). A reference to a special "template" [Action](#Action), which receives a member of this collection and return the rendered view.
-+ **renderToRef**: [UID](#uid). A reference to the placholder or collection this widget will replace.
 
 ### App
 
