@@ -26,7 +26,7 @@ By default, the server will listenon [localhost:3000](localhost:3000).
 The unique ID of almost everything. There are 3 kinds of UID:
 
 1. 16-character random string that consists of numbers and uppercase letters, like `7AL0E139CJ31014A`.
-2. User-defined HTML element ID. Must start with `#VRAC`, like `#VRAC-TWD-field`.
+2. User-defined HTML element ID/class. IDs must start with `#VRAC`, like `#VRAC-TWD-field` and classes must start with `.VRAC`, like `.VRAC-item-title-label`.
 3. Reserved UID. Such as `document`(`document` of DOM), `timer`(simulating `setTimeout`), `initial`. 
 
 ### Program
@@ -65,9 +65,29 @@ A widget, including its HTML and CSS code.
 + **uid**: [UID](#uid).
 + **htmlPath**: String. The absolute path to the HTML file of this widget.
 + **renderToRef**: [UID](#uid). A reference to the placholder or collection this widget will replace.
-+ **isCollection**: Boolean. Whether this widget is a collection? If so, it will be rendered multiple times.
++ **isCollection**: Boolean. Whether this widget is a collection? If so, it will be rendered multiple times. See [Collection](#collection).
 
-As [Widget](#widget).
+### Collection
+
+A collection is just a widget with `isCollection` set as `true`. But its HTML needs to satisfy some requirements. 
+
+Collection Example:
+
+```html
+<ul id="todo-list" vrac-type="collection">
+</ul>
+
+<template vrac-type="view">
+<div class="view">
+  <input class="toggle VRAC-item-check" type="checkbox">
+  <label class="VRAC-item-title-label"></label>
+  <button class="VRAC-item-destroy" class="destroy"></button>
+</div>
+<input class="edit VRAC-item-title" value="Title">
+</template>
+```
+
+As above code shows, the HTML of a collection consists of two parts: `collection` and `view`. The `collection` is a node with attribute `vrac-type="collection"`, and the `view` is a `<template>` with attribute `vrac-type="view"`. In the runtime, the `view` will be rendered into the `collection`.  
 
 ### Signal
 
