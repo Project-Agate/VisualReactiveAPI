@@ -91,7 +91,7 @@ As above code shows, the HTML of a collection consists of two parts: `collection
 
 ### Signal
 
-When we mention [Signal](#signal) in this specification, it can be a [Action](#action), an [Element](#event), an [Event](#event), an [Attribute](#attribute) or a [Constant](#constant).
+When we mention [Signal](#signal) in this specification, it can be a [Action](#action), an [Element](#event), an [Event](#event), a [RAttribute](#rattribute), a [WAttribute](#wattribute), a [Mutable](#mutable) or a [Constant](#constant).
 
 ### Action
 
@@ -239,6 +239,22 @@ An attribute of a certain [Element](#element) or `document`. It can only be used
 + **signalRef**: [UID](#uid). A reference to the singal which updates this attribute when changed. For "read-only" attributes, leave this as `null`.
 + **name**: String. The name of this attribute. Generally it should be one of standard [HTML attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes) or `innerHTML`.
 
+### DataSource
+
+A mutable data source. It holds its current value and pop a new value when a mutator comes.
+
+```javascript
+{
+  type: "mutable",
+  uid: "VU977EDJ16NIWAI8",
+  initialValue: [],
+  mutatorRef: "2MXHYT6EOTBVF9A0"
+}
+```
+
++ **uid**: [UID](#uid).
++ **initialValue**: Any. The initial value of this data source.
++ **mutatorRef**: A reference to a stream of mutators. A mutator is just a function that receives the current value of this data source and return a new value.
 
 ### Constant
 
