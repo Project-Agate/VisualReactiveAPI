@@ -242,15 +242,15 @@ A collection of views that will be re-rendered every time the data binded to it 
   type: "collection",
   uid: "W8HVUI29DI3YGQML",
   dataRef: "8U6G2YACX752X1A8",
+  templateRef: "C168G8JO5RRD6WIT",
   renderToRef: "4OLXEQASJSLBS5NB",
 }
 
 ```
 
-**Note**: When a collection is used as input of an [Action](#action), it pops one of its members at a time, not the whole array.
-
 + **uid**: [UID](#uid).
 + **dataRef**: [UID](#uid). A reference to the data source of this collection. Most of the time, it should point to a [Action](#action) returning an array.
++ **templateRef**: [UID](#uid). A reference to a special "template" [Action](#Action), which receives a member of this collection and return the rendered view.
 + **renderToRef**: [UID](#uid). A reference to the placholder or collection this widget will replace.
 
 ### App
