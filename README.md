@@ -249,7 +249,7 @@ There are 3 kinds of attribute names:
 
 1. One of standard [HTML attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes).
 e.g. `value`, `name`, etc. Under the hood, we use jQuery's `prop()` to read/write these attributes, so boolean attributes like `checked` work as expected.
-2. `innerHTML`. This attribute represents standard [Element.innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element.innerHTML).
+2. `field:#{fieldName}`. They represent low-level fields of the DOM elements. For example, `field:innerHTML` represents [Element.innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element.innerHTML).
 3. `class:#{className}`. They are boolean attributes to toggle classes. For example, if you set `class:checked` as `true`, the corresponding element will get `checked` class, without affect the other classes it has. 
 
 ### DataSource
