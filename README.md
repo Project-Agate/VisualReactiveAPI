@@ -222,7 +222,7 @@ An attribute of a certain [Element](#element) or `document`. It can only be used
 
 + **uid**: [UID](#uid).
 + **elementRef**: [UID](#uid). A reference to the element this attribute belongs to.
-+ **name**: String. The name of this attribute. Generally it should be one of standard [HTML attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes) or `innerHTML`.
++ **name**: String. The name of this attribute. See [Attribute Syntax](#attribute-syntax).
 
 ### WAttribute
 
@@ -242,6 +242,15 @@ An attribute of a certain [Element](#element) or `document`. It can only be used
 + **elementRef**: [UID](#uid). A reference to the element this attribute belongs to.
 + **signalRef**: [UID](#uid). A reference to the singal which updates this attribute when changed. For "read-only" attributes, leave this as `null`.
 + **name**: String. The name of this attribute. Generally it should be one of standard [HTML attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes) or `innerHTML`.
+
+#### Attribute Syntax 
+
+There are 3 kinds of attribute names:
+
+1. One of standard [HTML attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes).
+e.g. `value`, `name`, etc. Under the hood, we use jQuery's `prop()` to read/write these attributes, so boolean attributes like `checked` work as expected.
+2. `innerHTML`. This attribute represents standard [Element.innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element.innerHTML).
+3. `class:#{className}`. They are boolean attributes to toggle classes. For example, if you set `class:checked` as `true`, the corresponding element will get `checked` class, without affect the other classes it has. 
 
 ### DataSource
 
