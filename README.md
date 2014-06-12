@@ -241,7 +241,7 @@ An attribute of a certain [Element](#element) or `document`. It can only be used
 + **uid**: [UID](#uid).
 + **elementRef**: [UID](#uid). A reference to the element this attribute belongs to.
 + **signalRef**: [UID](#uid). A reference to the singal which updates this attribute when changed. For "read-only" attributes, leave this as `null`.
-+ **name**: String. The name of this attribute. Generally it should be one of standard [HTML attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes) or `innerHTML`.
++ **name**: String. The name of this attribute. See [Attribute Syntax](#attribute-syntax).
 
 #### Attribute Syntax 
 
