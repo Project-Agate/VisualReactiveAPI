@@ -2,8 +2,6 @@ console.log('importing {{{uid}}}');
 var doc = document.currentScript.ownerDocument;
 var widget = doc.querySelector("template").content.cloneNode(true);
 {{{shadowDOMsCode}}}
-doc['_widget'] = widget;
 
-window.widgetDOMs = window.widgetDOMs || {};
-window.widgetDOMs["{{{uid}}}"] = widget;
-
+window.importedWidgets = window.importedWidgets || {};
+window.importedWidgets["{{{uid}}}"] = widget;

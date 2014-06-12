@@ -18,14 +18,25 @@ class Renderer {
   html: string = '';
 
   private rAttributeSource: string = fs.readFileSync('templates/RAttributeTemplate.handlebars').toString();
-  private wAttributeSource: string = fs.readFileSync('templates/WAttributeTemplate.handlebars').toString();
   private rAttributeTemplate: HandlebarsTemplateDelegate = Handlebars.compile(this.rAttributeSource);
+  private wAttributeSource: string = fs.readFileSync('templates/WAttributeTemplate.handlebars').toString();
   private wAttributeTemplate: HandlebarsTemplateDelegate = Handlebars.compile(this.wAttributeSource);
+  private eventSource: string = fs.readFileSync('templates/EventTemplate.handlebars').toString();
+  private eventTemplate: HandlebarsTemplateDelegate = Handlebars.compile(this.eventSource);
+  private demuxerActionSource: string = fs.readFileSync('templates/DemuxerActionTemplate.handlebars').toString();
+  private demuxerActionTemplate: HandlebarsTemplateDelegate = Handlebars.compile(this.demuxerActionSource);
+  private dataSourceSource: string = fs.readFileSync('templates/DataSourceTemplate.handlebars').toString();
+  private dataSourceTemplate: HandlebarsTemplateDelegate = Handlebars.compile(this.dataSourceSource);
 
   constructor() {
     Handlebars.registerHelper('commaList', function(object: any[]) {
       return new Handlebars.SafeString(
         object.join(', ')
+      );
+    });
+    Handlebars.registerHelper('literal', function(object: any) {
+      return new Handlebars.SafeString(
+        JSON.stringify(object)
       );
     });
   }
@@ -51,6 +62,16 @@ class Renderer {
     }
 
     for(var uid in this.signals) {
+      var signal = this.signals[uid];
+      if(signal.type === 'demuxer') {
+        var newActions = this.preprocessDemuxer(<VRAC.Demuxer>signal);
+        newActions.forEach((action: VRAC.Action) => {
+          this.signals[action.uid] = action;
+        });
+      }
+    }
+
+    for(var uid in this.signals) {
       this.processSignal(this.signals[uid]);
     }
 
@@ -59,6 +80,24 @@ class Renderer {
     rootWidget.renderTree(this.javascript, appFiles);
 
     return appFiles;
+  }
+
+  preprocessDemuxer(demuxer: VRAC.Demuxer): VRAC.Action[] {
+    return demuxer.outputs.map((output, index) => {
+      var demuxerActionCode = this.demuxerActionTemplate({
+        key: output.key,
+        isOnArray: demuxer.isOnArray,
+      });
+      return {
+        type: 'action',
+        uid: output.uid,
+        name: 'demuxer_action_' + output.uid + '_' + output.key,
+        parameters: [
+          {name: 'data', valueRef: demuxer.inputRef }
+        ],
+        body: demuxerActionCode,
+      };
+    });
   }
 
   processSignal(signal: VRAC.Signal): string {
@@ -73,10 +112,16 @@ class Renderer {
         return signal.streamName = this.processRAttribute(<VRAC.RAttribute>signal);
       case 'wAttribute':
         return signal.streamName = this.processWAttribute(<VRAC.WAttribute>signal);
+      case 'dataSource':
+        return signal.streamName = this.processDataSource(<VRAC.DataSource>signal);
       case 'constant':
         return signal.streamName = this.processConstant(<VRAC.Constant>signal);
+      case 'placeholder':
+      case 'element':
+      case 'demuxer':
+        return signal.streamName = ''; // Placholder, Element and Demuxer don't have their own JavaScript code
       default:
-        throw new Error("Unknown signal type:" + signal.type);
+        throw 'Unknown signal type: "' + signal.type + '"';
     }
   }
 
@@ -106,44 +151,74 @@ class Renderer {
   }
 
   processEvent(event: VRAC.Event): string {
-    throw 'Event is not supported yet!';
+    var streamName = 'event_' + event.uid;
+    var element = <VRAC.Element>this.signals[event.elementRef];
+    var widget = this.widgets[element.widgetRef];
+
+    var eventCode = this.eventTemplate({
+      widgetUID: widget.uid,
+      streamName: streamName,
+      elementSelector: element.selector,
+      eventType: event.eventType,
+    });
+
+    this.addJavascriptCode(eventCode);
+
+    return streamName;
   }
 
   processRAttribute(attribute: VRAC.RAttribute): string {
-    // We need a better way to read general attributes, don't try do DRY W/RAttributes for now
-    if(attribute.name === 'value') { 
-      var streamName = 'attribute_' + attribute.name + '_' + attribute.uid;
-      var element = <VRAC.Element>this.signals[attribute.elementRef];
-      var selectingCode = '$("#' + element.widgetRef + ' ' + element.selector + '")';
+    var streamName = 'rAttribute_' + attribute.name + '_' + attribute.uid;
+    var element = <VRAC.Element>this.signals[attribute.elementRef];
+    var widget = this.widgets[element.widgetRef];
+    var selectingCode = '$(window.shadowRoots["' + widget.uid + '"].querySelector("' + element.selector + '"))';
 
-      var attributeCode = this.rAttributeTemplate({
-        streamName: streamName,
-        seletingCode: selectingCode,
-      });
+    var attributeCode = this.rAttributeTemplate({
+      streamName: streamName,
+      seletingCode: selectingCode,
+      attributeName: attribute.name,
+      isOnCollection: widget.isCollection(),
+    });
 
-      this.addJavascriptCode(attributeCode);
+    this.addJavascriptCode(attributeCode);
 
-      return streamName;
-    }
-    else {
-      throw 'attribute "' + attribute.name + '" is not supported for RAttribute.';
-    }
+    return streamName;
   }
 
   processWAttribute(attribute: VRAC.WAttribute): string {
-    var streamName = 'attribute_' + attribute.name + '_' + attribute.uid;
+    var streamName = 'wAttribute_' + attribute.name + '_' + attribute.uid;
     var element = <VRAC.Element>this.signals[attribute.elementRef];
-    var selectingCode = '$("#' + element.widgetRef + ' ' + element.selector + '")';
+    var widget = this.widgets[element.widgetRef];
+    var selectingCode = '$(window.shadowRoots["' + widget.uid + '"].querySelectorAll("' + element.selector + '"))';
     var sourceSignal = this.signals[attribute.signalRef];
     var signalStreamName = this.processSignal(sourceSignal);
 
     var attributeCode = this.wAttributeTemplate({
+      widgetUID: widget.uid,
       seletingCode: selectingCode,
       signalStreamName: signalStreamName,
       attributeName: attribute.name,
+      isOnCollection: widget.isCollection(),
     });
 
     this.addJavascriptCode(attributeCode);
+
+    return streamName;
+  }
+
+  processDataSource(dataSource: VRAC.DataSource): string {
+    var streamName = 'dataSource_' + dataSource.uid;
+    var initialValue = dataSource.initialValue;
+    var mutatorStreamNames = dataSource.mutatorRefs.map((m) => {
+      return this.processSignal(this.signals[m]);
+    });
+    var dataSourceCode = this.dataSourceTemplate({
+      streamName: streamName,
+      mutatorStreamNames: mutatorStreamNames,
+      initialValue: initialValue,
+    });
+
+    this.addJavascriptCode(dataSourceCode);
 
     return streamName;
   }

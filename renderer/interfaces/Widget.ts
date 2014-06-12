@@ -5,6 +5,12 @@ import Handlebars = require('handlebars');
 import VRAC = require('VRAC');
 
 class Widget {
+  static defaultLibraries: string[] = ["lib/jquery.min.js",
+                                       "lib/bacon.min.js",
+                                       "lib/bacon.model.min.js",
+                                       "lib/bacon.jquery.min.js", 
+                                       "lib/handlebars.min.js"];
+
   uid: string;
   htmlPath: string;
   renderToRef: string;
@@ -14,6 +20,7 @@ class Widget {
 
   private _isCollection: boolean;
 
+  private libLinksCode: string = Widget.defaultLibraries.map((src) => { return '<script src="' + src + '"></script>'; }).join('\n');
   private shadowDOMSource: string = fs.readFileSync('templates/ShadowDOMTemplate.handlebars').toString();
   private shadowDOMTemplate: HandlebarsTemplateDelegate = Handlebars.compile(this.shadowDOMSource);
   private nonRootWidgetSource: string = fs.readFileSync('templates/NonRootWidgetTemplate.handlebars').toString();
@@ -62,12 +69,12 @@ class Widget {
       assert(!this.isCollection(), "The root widget can't be a collection!");
 
       filePath = "app.html";
-      this.renderingHtml = importsCode + this.renderingHtml;
+      this.renderingHtml = this.libLinksCode + importsCode + this.renderingHtml;
       this.renderingJavascript += this.rootWidgetTemplate({
         uid: this.uid,
         shadowDOMsCode: shadowDOMsCode,
       }); 
-      content = this.renderingHtml + "\n<script>\n" + rootJavascript + "\n" + this.renderingJavascript + "\n</script>";
+      content = this.renderingHtml + "\n<script>\n" + this.renderingJavascript + '\n' + rootJavascript + "\n</script>";
     }
     else {
       filePath = "/imports/" + this.uid + ".html";

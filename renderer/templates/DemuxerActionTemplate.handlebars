@@ -1,0 +1,5 @@
+{{#if isOnArray}}
+  return data.map(function(datum){ return datum.{{{key}}}; });
+{{else}}
+  return data.{{{key}}};
+{{/if}}

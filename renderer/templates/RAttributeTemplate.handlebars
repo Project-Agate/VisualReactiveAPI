@@ -1,24 +1,35 @@
 var {{{streamName}}};
 (function() {
-  var $element = {{{seletingCode}}};
-  var type = $element.prop("type");
-  var tagName = $element.prop("tagName");
-  if(tagName === "INPUT") {
-    switch(type) {
-      case "text":
-        {{{streamName}}} = Bacon.$.textFieldValue($element);
-        break;
-      case "checkbox":
-        {{{streamName}}} = Bacon.$.checkBoxValue($element);
-        break;
-      case "select":
-        {{{streamName}}} = Bacon.$.selectValue($element);
-        break;
-      default:
-        throw "input type \"" + type + "\" is not supported for RAttribute.";
+  var readSingleValue = function(element) {
+    var type = $(element).prop("type");
+    var attributeName = "{{{attributeName}}}";
+    var tagName = $(element).prop("tagName");
+    if(tagName === "INPUT") {
+      if(type == "text" && attributeName == "value") {
+        return Bacon.$.textFieldValue($element);
+      }
+      else if(type == "checkbox" && attributeName == "checked") {
+        return Bacon.$.checkBoxValue($element);
+      }
+      else if(type == "select" && attributeName == "value") {
+        return Bacon.$.selectValue($element);
+      }
+      else {
+        throw "reading attribute \"" + attributeName + "\" of input type \"" + type + "\" is not supported for RAttribute.";
+      }
     }
-  }
-  else {
-    throw "tag \"" + tagName + "\" is not supported for RAttribute.";
-  }
+    else {
+      throw "tag \"" + tagName + "\" is not supported for RAttribute.";
+    }
+  };
+
+  {{#if isOnCollection}}
+    var $elements = {{{seletingCode}}};
+    {{{streamName}}} = Bacon.zipAsArray($.map($elements, function(i, element) {
+      return readSingleValue(element);
+    }));
+  {{else}}
+    var $element = {{{seletingCode}}};
+    {{{streamName}}} = readSingleValue($element.get(0));
+  {{/if}}
 })();

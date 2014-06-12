@@ -34,6 +34,12 @@ export interface Parameter {
   valueRef: string;
 }
 
+export interface Demuxer extends Signal {
+  inputRef: string;
+  outputs: {uid: string; key:string;}[];
+  isOnArray: boolean;
+}
+
 export interface Placeholder extends Signal {
   widgetRef: string;
   selector: string;
@@ -58,6 +64,11 @@ export interface WAttribute extends Signal {
   elementRef: string;
   signalRef: string;
   name: string;
+}
+
+export interface DataSource extends Signal {
+  initialValue: any;
+  mutatorRefs: string[];
 }
 
 export interface Constant extends Signal {

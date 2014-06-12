@@ -1,16 +1,20 @@
-doc['_render'] = function(itemCount) {
-  var collection = window.widgetDOMs["{{{uid}}}"].querySelector('[vrac-type="collection"]');
-  while(collection.children.length > itemCount) {
-    collection.removeChild(collection.lastChild);
-  }
-  var viewTemplate = collection.querySelector('template[vrac-type="view"]');
-  while(collection.children.length < itemCount) {
-    var view = viewTemplate.content.cloneNode(true);
-    collection.appendChild(view);
-  }
+(function() {
+  window.collectionRenders = window.collectionRenders || {};
+  window.collectionRenders["{{{uid}}}"] = function(itemCount) {
+    var root = window.shadowRoots["{{{uid}}}"];
+    var collection = root.querySelector('[vrac-type="collection"]');
+    while(collection.children.length > itemCount) {
+      collection.removeChild(collection.lastChild);
+    }
+    var viewTemplate = root.querySelector('template[vrac-type="view"]');
+    while(collection.children.length < itemCount) {
+      var view = viewTemplate.content.cloneNode(true);
+      collection.appendChild(view);
+    }
 
-  for(var i = 0; i < collection.children.length; i++) {
-    var view = collection.children[i];
-    $(view).prop('vrac-view-index', i);
-  }
-};
+    for(var i = 0; i < collection.children.length; i++) {
+      var view = collection.children[i];
+      $(view).prop('vrac-view-index', i);
+    }
+  }; 
+})();

@@ -34,6 +34,7 @@
     },
 
     ".VRAC-item-title-label": {
+      "type": "element",
       "uid": ".VRAC-item-title-label",
       "widgetRef": "203RWMERVJLAFPVL",
       "selector": ".VRAC-item-title-label"
@@ -46,6 +47,7 @@
       "name": "field:innerHTML"
     },
     ".VRAC-item": {
+      "type": "element",
       "uid": ".VRAC-item",
       "widgetRef": "203RWMERVJLAFPVL",
       "selector": ".VRAC-item"
@@ -82,21 +84,23 @@
       "parameters": [
         {"name": "e", "valueRef": "AA9DH50KX81UES21" }
       ],
-      "body": "var ENTER_KEY=13;\nvar input=e.target;\nvar title=input.value;\nif(e.which === ENTER_KEY && title !==''){\ninput.value="";\nreturn function(data){\ndata.push({title: title, completed: false});\nreturn data;\n};\n}"
+      "body": "var ENTER_KEY=13;\nvar input=e.target;\nvar title=input.value;\nif(e.which === ENTER_KEY && title !==''){\ninput.value='';\nreturn function(data){\ndata.push({title: title, completed: false});\nreturn data;\n};\n}"
     },
     "AA9DH50KX81UES21": {
       "type": "event",
       "uid": "AA9DH50KX81UES21",
       "elementRef": "#VRAC-new-todo",
-      "eventType": "keypress",
+      "eventType": "keypress"
     },
     "#VRAC-new-todo": {
+      "type": "element",
       "uid": "#VRAC-new-todo",
       "widgetRef": "TT9FRYJJC6ELQLLA",
       "selector": "#VRAC-new-todo"
     },
 
     ".VRAC-item-check": {
+      "type": "element",
       "uid": ".VRAC-item-check",
       "widgetRef": "203RWMERVJLAFPVL",
       "selector": ".VRAC-item-check"

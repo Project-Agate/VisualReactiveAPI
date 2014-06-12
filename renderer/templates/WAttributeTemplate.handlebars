@@ -1,12 +1,43 @@
 (function() {
-  var $element = {{{seletingCode}}};
-  {{{signalStreamName}}}.onValue(function(value) {
+  var writeSingleValue = function(element, value) {
+    var fieldPattern = /field:(.*)/;
+    var classPattern = /class:(.*)/;
     var attributeName = "{{{attributeName}}}";
-    if(attributeName === 'innerHTML') {
-      $element.html(value);
+    var fieldMatch = fieldPattern.exec(attributeName);
+    var classMatch = classPattern.exec(attributeName);
+
+    if(fieldMatch) {
+      var fieldName = fieldMatch[1];
+      element[fieldName] = value;
+    }
+    else if(classMatch) {
+      var className = classMatch[1];
+      if(typeof value !== "boolean")
+        throw "Value of a class: attribute has to be boolean. Got: " + value;
+
+      if(value) 
+        $(element).addClass(className);
+      else
+        $(element).removeClass(className);
     }
     else {
       $element.prop(attributeName, value);
     }
-  });
+  };
+
+  {{#if isOnCollection}}
+    {{{signalStreamName}}}.onValue(function(values) {
+      var collectionRender = window.collectionRenders["{{{widgetUID}}}"];
+      collectionRender(values.length);
+      var $elements = {{{seletingCode}}};
+      $elements.each(function(i, element) {
+        writeSingleValue(element, values[i]);
+      });
+    });
+  {{else}}
+    var $element = {{{seletingCode}}};
+    {{{signalStreamName}}}.onValue(function(value) {
+      writeSingleValue($element.get(0), value);
+    });
+  {{/if}}
 })();

@@ -1,23 +1,23 @@
+<meta charset="utf-8">
 <style>
-#toggle-all {
-  position: absolute;
-  top: -42px;
-  left: -4px;
-  width: 40px;
-  text-align: center;
-  /* Mobile Safari */
-  border: none;
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 100%;
+  vertical-align: baseline;
+  font-family: inherit;
+  color: inherit;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
 }
 
-#toggle-all:before {
-  content: '»';
-  font-size: 28px;
-  color: #d9d9d9;
-  padding: 0 25px 7px;
-}
-
-#toggle-all:checked:before {
-  color: #737373;
+button,
+input[type="checkbox"] {
+  outline: none;
 }
 
 #todo-list {
@@ -101,7 +101,7 @@
   text-decoration: line-through;
 }
 
-#todo-list li .destroy {
+#todo-list li .VRAC-item-destroy {
   display: none;
   position: absolute;
   top: 0;
@@ -116,7 +116,7 @@
   transition: all 0.2s;
 }
 
-#todo-list li .destroy:hover {
+#todo-list li .VRAC-item-destroy:hover {
   text-shadow: 0 0 1px #000,
          0 0 10px rgba(199, 107, 107, 0.8);
   -webkit-transform: scale(1.3);
@@ -124,11 +124,11 @@
   transform: scale(1.3);
 }
 
-#todo-list li .destroy:after {
+#todo-list li .VRAC-item-destroy:after {
   content: '✖';
 }
 
-#todo-list li:hover .destroy {
+#todo-list li:hover .VRAC-item-destroy {
   display: block;
 }
 
@@ -140,25 +140,9 @@
   margin-bottom: -1px;
 }
 
-#todo-count {
-  float: left;
-  text-align: left;
-}
-
-#info {
-  margin: 65px auto 0;
-  color: #a6a6a6;
-  font-size: 12px;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
-  text-align: center;
-}
-
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   #todo-list li .toggle {
     background: none;
-  }
-
-  #todo-list li .toggle {
     height: 40px;
   }
 }

@@ -1,0 +1,5 @@
+var {{{streamName}}};
+(function(){
+  var widget = window.shadowRoots["{{{widgetUID}}}"];
+  {{{streamName}}} = $(widget).asEventStream("{{{eventType}}}", "{{{elementSelector}}}");
+})();

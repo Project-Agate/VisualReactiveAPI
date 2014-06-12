@@ -1,0 +1,11 @@
+var {{{streamName}}};
+(function(){
+  var mutatorStream = Bacon.mergeAll([{{{commaList mutatorStreamNames}}}]);
+  {{{streamName}}} = mutatorStream.scan({{{literal initialValue}}}, function(oldValue, mutator) {
+    var copiedValue = (oldValue instanceof Array) ? [] : {};
+    $.extend(true, copiedValue, oldValue);
+    var newValue = mutator ? mutator(copiedValue) : copiedValue;
+    console.log(newValue);
+    return newValue;
+  });
+})();

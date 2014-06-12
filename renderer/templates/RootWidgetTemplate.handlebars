@@ -2,5 +2,5 @@ var doc = document.currentScript.ownerDocument;
 var widget = doc;
 {{{shadowDOMsCode}}}
 
-window.widgetDOMs = window.widgetDOMs || {};
-window.widgetDOMs["{{{uid}}}"] = widget;
+window.shadowRoots = window.shadowRoots || {};
+window.shadowRoots["{{{uid}}}"] = doc;

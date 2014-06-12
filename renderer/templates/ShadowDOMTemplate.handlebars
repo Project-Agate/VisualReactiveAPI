@@ -1,4 +1,7 @@
 shadow = widget.querySelector("{{{selector}}}").createShadowRoot();
-importedContent = doc.querySelector('link[href="{{{childFilePath}}}"]').import['_widget'];
+importedContent = window.importedWidgets["{{{childUID}}}"];
 console.log('appending {{{childUID}}}');
 shadow.appendChild(importedContent);
+
+window.shadowRoots = window.shadowRoots || {};
+window.shadowRoots["{{{childUID}}}"] = shadow;
