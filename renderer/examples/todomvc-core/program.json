@@ -43,14 +43,27 @@
       "uid": "38EWS67KAW3ROIRE",
       "elementRef": ".VRAC-item-title-label",
       "signalRef": "JQXGSDQVCU25M60S",
-      "name": "innerHTML"
+      "name": "field:innerHTML"
+    },
+    ".VRAC-item": {
+      "uid": ".VRAC-item",
+      "widgetRef": "203RWMERVJLAFPVL",
+      "selector": ".VRAC-item"
+    },
+    "W44V30HXYWWAUKZY": {
+      "type": "wAttribute",
+      "uid": "W44V30HXYWWAUKZY",
+      "elementRef": ".VRAC-item",
+      "signalRef": "ACR49CR4PN6CM2C9",
+      "name": "class:checked"
     },
     "WZQ9KTF6KP9X64CW": {
       "type": "demuxer",
       "uid": "WZQ9KTF6KP9X64CW",
       "inputRef": "AMENFLFNMJT97FLQ",
       "outputs": [
-        {"uid": "JQXGSDQVCU25M60S", "key": "title"}
+        {"uid": "JQXGSDQVCU25M60S", "key": "title"},
+        {"uid": "ACR49CR4PN6CM2C9", "key": "completed"}
       ],
       "isOnArray": true
     },
@@ -69,7 +82,7 @@
       "parameters": [
         {"name": "e", "valueRef": "AA9DH50KX81UES21" }
       ],
-      "body": "var ENTER_KEY=13;\nvar input=e.target;\nvar title=input.value;\nif(e.which === ENTER_KEY && title !==''){\ninput.value="";\nreturn function(data){\ndata.push({title: title});\nreturn data;\n};\n}"
+      "body": "var ENTER_KEY=13;\nvar input=e.target;\nvar title=input.value;\nif(e.which === ENTER_KEY && title !==''){\ninput.value="";\nreturn function(data){\ndata.push({title: title, completed: false});\nreturn data;\n};\n}"
     },
     "AA9DH50KX81UES21": {
       "type": "event",
@@ -82,5 +95,26 @@
       "widgetRef": "TT9FRYJJC6ELQLLA",
       "selector": "#VRAC-new-todo"
     },
+
+    ".VRAC-item-check": {
+      "uid": ".VRAC-item-check",
+      "widgetRef": "203RWMERVJLAFPVL",
+      "selector": ".VRAC-item-check"
+    },
+    "FP2O81YWXT30VI92": {
+      "type": "rAttribute",
+      "uid": "FP2O81YWXT30VI92",
+      "elementRef": ".VRAC-item-check",
+      "name": "checked"
+    },
+    "EPZ6S3Q065YLBDBR": {
+      "type": "action",
+      "uid": "EPZ6S3Q065YLBDBR",
+      "name": "checkCompletedItem",
+      "parameters": [
+        {"name": "completeds", "valueRef": "FP2O81YWXT30VI92"}
+      ],
+      "body": "return function(data)\n{completeds.forEach(function(completed, index){\ndata[index].completed = completed;\n}\n)\nreturn data;\n};"
+    }
   }
 }

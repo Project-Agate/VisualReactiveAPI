@@ -3,6 +3,8 @@
 /// <reference path="./definitions/templates.d.ts" />
 
 import fs = require('fs');
+import asset = require('assert');
+
 import Handlebars = require('handlebars');
 
 import VRAC = require('./interfaces/VRAC');
@@ -73,6 +75,8 @@ class Renderer {
         return signal.streamName = this.processWAttribute(<VRAC.WAttribute>signal);
       case 'constant':
         return signal.streamName = this.processConstant(<VRAC.Constant>signal);
+      default:
+        throw new Error("Unknown signal type:" + signal.type);
     }
   }
 

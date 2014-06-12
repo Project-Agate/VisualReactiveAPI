@@ -8,4 +8,9 @@ doc['_render'] = function(itemCount) {
     var view = viewTemplate.content.cloneNode(true);
     collection.appendChild(view);
   }
+
+  for(var i = 0; i < collection.children.length; i++) {
+    var view = collection.children[i];
+    $(view).prop('vrac-view-index', i);
+  }
 };
