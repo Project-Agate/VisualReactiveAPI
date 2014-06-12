@@ -57,7 +57,7 @@
       "uid": "W44V30HXYWWAUKZY",
       "elementRef": ".VRAC-item",
       "signalRef": "ACR49CR4PN6CM2C9",
-      "name": "class:checked"
+      "name": "class:completed"
     },
     "WZQ9KTF6KP9X64CW": {
       "type": "demuxer",
@@ -74,7 +74,7 @@
       "type": "dataSource",
       "uid": "AMENFLFNMJT97FLQ",
       "initialValue": [],
-      "mutatorRefs": ["N9SRTOW04U3TBGU4"]
+      "mutatorRefs": ["N9SRTOW04U3TBGU4", "EPZ6S3Q065YLBDBR", "YGYBRBYVCXPXASK5"]
     },
 
     "N9SRTOW04U3TBGU4": {
@@ -106,19 +106,41 @@
       "selector": ".VRAC-item-check"
     },
     "FP2O81YWXT30VI92": {
-      "type": "rAttribute",
+      "type": "event",
       "uid": "FP2O81YWXT30VI92",
       "elementRef": ".VRAC-item-check",
-      "name": "checked"
+      "eventType": "change"
     },
     "EPZ6S3Q065YLBDBR": {
       "type": "action",
       "uid": "EPZ6S3Q065YLBDBR",
       "name": "checkCompletedItem",
       "parameters": [
-        {"name": "completeds", "valueRef": "FP2O81YWXT30VI92"}
+        {"name": "e", "valueRef": "FP2O81YWXT30VI92"}
       ],
-      "body": "return function(data)\n{completeds.forEach(function(completed, index){\ndata[index].completed = completed;\n}\n)\nreturn data;\n};"
+      "body": "return function(data)\n{var index = parseInt($(e.target).closest('[vrac-view-index]').attr('vrac-view-index'));\ndata[index].completed = $(e.target).prop('checked');\nreturn data;\n};"
+    },
+
+    ".VRAC-item-destroy": {
+      "type": "element",
+      "uid": ".VRAC-item-destroy",
+      "widgetRef": "203RWMERVJLAFPVL",
+      "selector": ".VRAC-item-destroy"
+    },
+    "RFP5G814TH49PXCF": {
+      "type": "event",
+      "uid": "RFP5G814TH49PXCF",
+      "elementRef": ".VRAC-item-destroy",
+      "eventType": "click"
+    },
+    "YGYBRBYVCXPXASK5": {
+      "type": "action",
+      "uid": "YGYBRBYVCXPXASK5",
+      "name": "destroyItem",
+      "parameters": [
+        {"name": "e", "valueRef": "RFP5G814TH49PXCF"}
+      ],
+      "body": "return function(data)\n{var index = parseInt($(e.target).closest('[vrac-view-index]').attr('vrac-view-index'));\ndata.splice(index, 1);\nreturn data;\n};"
     }
   }
 }
