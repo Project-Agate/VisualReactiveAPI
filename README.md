@@ -252,6 +252,8 @@ e.g. `value`, `name`, etc. Under the hood, we use jQuery's `prop()` to read/writ
 2. `field:#{fieldName}`. They represent low-level fields of the DOM elements. For example, `field:innerHTML` represents [Element.innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element.innerHTML).
 3. `class:#{className}`. They are boolean attributes to toggle classes. For example, if you set `class:checked` as `true`, the corresponding element will get `checked` class, without affecting the other classes it has. 
 
+**Note**: For [RAttribute](#rattribute), only `value` for text input and `checked` for checkbox are supported at present!
+
 ### DataSource
 
 A mutable data source. It holds its current value and pop a new value when a mutator comes.
