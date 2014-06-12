@@ -224,6 +224,9 @@ An attribute of a certain [Element](#element) or `document`. It can only be used
 + **elementRef**: [UID](#uid). A reference to the element this attribute belongs to.
 + **name**: String. The name of this attribute. See [Attribute Syntax](#attribute-syntax).
 
+**Note**: [RAttribute](#rattribute) doesn't work on [Collection](#collection) at present!
+
+
 ### WAttribute
 
 An attribute of a certain [Element](#element) or `document`. It can only be used as an input port.
