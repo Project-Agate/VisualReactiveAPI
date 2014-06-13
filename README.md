@@ -64,7 +64,7 @@ A widget, including its HTML and CSS code.
 
 + **uid**: [UID](#uid).
 + **htmlPath**: String. The absolute path to the HTML file of this widget.
-+ **renderToRef**: [UID](#uid). A reference to the placholder or collection this widget will replace.
++ **renderToRef**: [UID](#uid). A reference to the placeholder or collection this widget will replace.
 + **isCollection**: Boolean. Whether this widget is a collection? If so, it will be rendered multiple times. See [Collection](#collection).
 
 ### Collection

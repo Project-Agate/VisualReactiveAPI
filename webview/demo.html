@@ -1,49 +1,29 @@
-<div>
-  <style type="text/css">
-    #amount-fields {
-      width: 700px;
-      margin: auto;
-    }
-    #exchange-rate {
-      width: 700px;
-      margin: 0px auto 40px;
-      padding: 0 0 20px 0;     
-      font-size: 36px;  
-      font-weight: bold;
-      text-align: center;
-      border-bottom: 1px dashed gray;
-    }
-    #VRAC-exchange-rate {
-      margin: 0 16px;
-      letter-spacing: 2px;
-      color: red;
-      font-size: 40px;
-    }
-    .grid {
-      display: block;
-      float: left;
-      width: 50%;
-      text-align: center;
-      font-size: 20px;
-    }
-    .grid input {
-      font-size: 20px;
-    }
-  </style>
-
-  <form class="clearfix" id="amount-fields">
-    <div id="exchange-rate">
-      USD-TWD <span id="VRAC-exchange-rate">0.00</span>
-    </div>
-    <label class="grid">
-      USD:
-      <input id="VRAC-USD-field" type="text" value="0.00" />
-    </label>
-    <label class="grid">
-      TWD:
-      <input id="VRAC-TWD-field" type="text" value="0.00" />
-    </label>
-  </form>
-</div>
-<script src="lib/jquery.min.js"></script>
-<script src="target/Webview.js"></script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Agate • TodoMVC</title>
+    <link rel="stylesheet" href="css/layout.css">
+  </head>
+  <body>
+    <section id="todoapp">
+      <header id="header">
+        <h1>todos</h1>
+        <input id="VRAC-new-todo" placeholder="What needs to be done?" autofocus>
+      </header>
+      <section id="main">
+        <input id="toggle-all" type="checkbox">
+        <label for="toggle-all">Mark all as complete</label>
+        <div vrac-placeholder id="VRAC-todo-list"/>
+      </section>
+      <div vrac-placeholder id="VRAC-footer"/>
+    </section>
+    <footer id="info">
+      <p>Double-click to edit a todo</p>
+      <p>Written by <a href="https://github.com/raincolee">Raincole Lai</a></p>
+      <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+    </footer>
+    <script src="lib/jquery.min.js"></script>
+    <script src="target/Webview.js"></script>
+  </body>
+</html>

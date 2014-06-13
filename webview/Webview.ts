@@ -24,8 +24,12 @@ class Webview {
     Webview.widget = $('body').children()[0];
     var collection = document.querySelector('[vrac-collection]');
     var viewTemplate = document.querySelector('template[vrac-view]');
-    var view = viewTemplate['content'].cloneNode(true);
-    collection.appendChild(view);
+    if(collection && viewTemplate) {
+      var view = viewTemplate['content'].cloneNode(true);
+      collection.appendChild(view);
+    }
+
+    $('head').append('<link rel="stylesheet" href="css/Webview.css"/>');
 
     Webview.elements = $('[id^=VRAC],[class^=VRAC]').toArray();
   }
@@ -119,9 +123,14 @@ class Webview {
   }
 
   static setSelectingMask(element: Element) {
+    var selectingClass = 'vrac-agate-selecting';
+
     $(Webview.selectingMask).remove();
+    $('.'+selectingClass).removeClass(selectingClass);
 
     if(element) {
+      $(element).addClass(selectingClass);
+
       var $selectingMask = $('<div>');
       var clientRect = element.getBoundingClientRect();
       $('body').append($selectingMask);
