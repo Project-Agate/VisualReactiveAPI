@@ -77,7 +77,7 @@ class Widget {
       content = this.renderingHtml + "\n<script>\n" + this.renderingJavascript + '\n' + rootJavascript + "\n</script>";
     }
     else {
-      filePath = "/imports/" + this.uid + ".html";
+      filePath = "imports/" + this.uid + ".html";
       this.renderingJavascript += this.nonRootWidgetTemplate({
         uid: this.uid,
         shadowDOMsCode: shadowDOMsCode,

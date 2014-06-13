@@ -34,10 +34,19 @@ class ProjectBuilder {
 
     mkdirp.sync(path.join(buildPath, 'imports'));
 
+    var appPath;
     for(var p in appFiles) {
       var htmlPath = path.join(buildPath, p);
-      fs.writeFileSync(htmlPath, appFiles[p]);
+      if(p === 'app.html') {
+        fs.writeFileSync(htmlPath, '<base href="/' + buildPath + '/"/>\n' + appFiles[p]);
+        appPath = htmlPath;
+      }
+      else {
+        fs.writeFileSync(htmlPath, appFiles[p]);
+      }
     }
+
+    return appPath;
   }
 
   deleteFolderRecursive(path) {

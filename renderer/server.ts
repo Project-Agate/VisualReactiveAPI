@@ -19,14 +19,14 @@ app.get('/', function(req, res){
 app.post('/compile', function(req, res) {
   var renderer = new Renderer();
   var projectBuilder = new ProjectBuilder();
-  var program = req.body;
-  var renderedApp = renderer.render(program);
+  var rawProgram = req.body;
+  var appFiles = renderer.render(rawProgram);
   var buildId = Date.now().toString();
   var buildPath = path.join('build', buildId);
 
-  var htmlPath = projectBuilder.build(buildPath, program, renderedApp);
+  var htmlPath = projectBuilder.build(buildPath, rawProgram, appFiles);
 
   res.send('/' + htmlPath);
 });
 
-app.listen(3000);
+app.listen(process.argv[2] || 3000);
