@@ -22,22 +22,37 @@ class Webview {
 
   static init() {
     Webview.widget = $('body').children()[0];
-    Webview.elements = $('[id^=VRAC]').toArray();
+    Webview.elements = $('[id^=VRAC],[class^=VRAC]').toArray();
   }
 
   static userElementFromElement(element: Element): UserElement {
     return element ? {
-      uid: $(element).attr('id'),
+      uid: Webview.findUID(element),
       clientRect: element.getBoundingClientRect(),
     } : null;
   }
 
   static elementDetailFromElement(element: Element): ElementDetail {
     return element ? {
-      uid: $(element).attr('id'),
-      events: ['click', 'change'],
+      uid: Webview.findUID(element),
+      events: ['click', 'change', 'keypress'],
       attributes: ['value', 'innerHTML'],
     } : null; 
+  }
+
+  static findUID(element: Element): string {
+    var uid;
+    var id = $(element).attr('id');
+    if(id.indexOf('VRAC') === 0) {
+      uid = '#' + id;
+    }
+    else {
+      $(element).attr('class').split(/\s+/).forEach(function(klass) {
+        if(klass.indexOf('VRAC') !== 0)
+          uid = '.' + klass;
+      });
+    }
+    return uid;
   }
 
   static offsetUserElement(userElement: UserElement): UserElement {

@@ -16,22 +16,36 @@ var Webview = (function () {
     }
     Webview.init = function () {
         Webview.widget = $('body').children()[0];
-        Webview.elements = $('[id^=VRAC]').toArray();
+        Webview.elements = $('[id^=VRAC],[class^=VRAC]').toArray();
     };
 
     Webview.userElementFromElement = function (element) {
         return element ? {
-            uid: $(element).attr('id'),
+            uid: Webview.findUID(element),
             clientRect: element.getBoundingClientRect()
         } : null;
     };
 
     Webview.elementDetailFromElement = function (element) {
         return element ? {
-            uid: $(element).attr('id'),
-            events: ['click', 'change'],
+            uid: Webview.findUID(element),
+            events: ['click', 'change', 'keypress'],
             attributes: ['value', 'innerHTML']
         } : null;
+    };
+
+    Webview.findUID = function (element) {
+        var uid;
+        var id = $(element).attr('id');
+        if (id.indexOf('VRAC') === 0) {
+            uid = '#' + id;
+        } else {
+            $(element).attr('class').split(/\s+/).forEach(function (klass) {
+                if (klass.indexOf('VRAC') !== 0)
+                    uid = '.' + klass;
+            });
+        }
+        return uid;
     };
 
     Webview.offsetUserElement = function (userElement) {
