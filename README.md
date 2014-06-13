@@ -112,20 +112,19 @@ A general-purpose function.
 + **parameters**: An array of [Parameter](#parameter)s. The parameters of this action.
 + **body**: String. The body of this action.
 
-### Demuxer
+### ObjectDemuxer
 
 A multi-output mapping function that separate an signal into multiple ones.
 
 ```javascript
 {
-  type: "demuxer",
+  type: "objectDemuxer",
   uid: "DA74TCGFOJPEMVTI",
   inputRef: "UD0MH7GT7W7ZA0W4",
   outputs: [
     {uid: "JQXGSDQVCU25M60S", key: "date"},
     {uid: "O3MDS0WFTYKLU2PI", key: "toString()"},
-  ],
-  isOnArray: true
+  ]
 }
 ```
 
@@ -134,7 +133,28 @@ A multi-output mapping function that separate an signal into multiple ones.
 + **outputs**:
   + **uid**: [UID](#uid).
   + **key**: String. The key used to map the input signal to the output. For example, if the value of input is `{foo: "1", bar: "2"} and the key is `foo`, the value of output will be `"1"`.
-+ **isOnArray**: Boolean. When it's `true`, this demuxer will treat input as an array of homogeneous objects instead of a single object. For example, if the value of input is `[{a: 1, b: 2}, {a: 3, b: 4}]` and the key is `a`, the value of output will be `[1, 3]`. If the value of input isn't an array, its behaviour is undefined.
+
+### ArrayDemuxer
+
+Similar to [ObjectDemuxer](#objectDemuxer), but it demuxes an array of objects rather than single object. For example, if the value of input is `[{a: 1, b: 2}, {a: 3, b: 4}]` and the key is `a`, the value of output will be `[1, 3]`. If the value of input isn't an array, its behaviour is undefined.
+
+```javascript
+{
+  type: "ArrayDemuxer",
+  uid: "DA74TCGFOJPEMVTI",
+  inputRef: "UD0MH7GT7W7ZA0W4",
+  outputs: [
+    {uid: "JQXGSDQVCU25M60S", key: "date"},
+    {uid: "O3MDS0WFTYKLU2PI", key: "toString()"},
+  ]
+}
+```
+
++ **uid**: [UID](#uid). **Note**: Currently, a demuxer doesn't really need an UID.
++ **inputRef**: [UID](#uid). A reference to the signal that will be separated.
++ **outputs**:
+  + **uid**: [UID](#uid).
+  + **key**: String. The key used to map the input signal to the output. For example, if the value of input is `{foo: "1", bar: "2"} and the key is `foo`, the value of output will be `"1"`.
 
 ### Parameter
 

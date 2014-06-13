@@ -34,10 +34,14 @@ export interface Parameter {
   valueRef: string;
 }
 
-export interface Demuxer extends Signal {
+export interface ArrayDemuxer extends Signal {
   inputRef: string;
   outputs: {uid: string; key:string;}[];
-  isOnArray: boolean;
+}
+
+export interface ObjectDemuxer extends Signal {
+  inputRef: string;
+  outputs: {uid: string; key:string;}[];
 }
 
 export interface Placeholder extends Signal {

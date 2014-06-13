@@ -63,8 +63,14 @@ class Renderer {
 
     for(var uid in this.signals) {
       var signal = this.signals[uid];
-      if(signal.type === 'demuxer') {
-        var newActions = this.preprocessDemuxer(<VRAC.Demuxer>signal);
+      if(signal.type === 'arrayDemuxer') {
+        var newActions = this.preprocessArrayDemuxer(<VRAC.ArrayDemuxer>signal);
+        newActions.forEach((action: VRAC.Action) => {
+          this.signals[action.uid] = action;
+        });
+      }
+      if(signal.type === 'objectDemuxer') {
+        var newActions = this.preprocessObjectDemuxer(<VRAC.ObjectDemuxer>signal);
         newActions.forEach((action: VRAC.Action) => {
           this.signals[action.uid] = action;
         });
@@ -82,22 +88,36 @@ class Renderer {
     return appFiles;
   }
 
-  preprocessDemuxer(demuxer: VRAC.Demuxer): VRAC.Action[] {
+  preprocessArrayDemuxer(demuxer: VRAC.ArrayDemuxer): VRAC.Action[] {
     return demuxer.outputs.map((output, index) => {
       var demuxerActionCode = this.demuxerActionTemplate({
         key: output.key,
-        isOnArray: demuxer.isOnArray,
+        isOnArray: true,
       });
-      return {
-        type: 'action',
-        uid: output.uid,
-        name: 'demuxer_action_' + output.uid + '_' + output.key,
-        parameters: [
-          {name: 'data', valueRef: demuxer.inputRef }
-        ],
-        body: demuxerActionCode,
-      };
+      return this.demuxerAction(output.uid, demuxer.inputRef, demuxerActionCode);
     });
+  }
+
+  preprocessObjectDemuxer(demuxer: VRAC.ObjectDemuxer): VRAC.Action[] {
+    return demuxer.outputs.map((output, index) => {
+      var demuxerActionCode = this.demuxerActionTemplate({
+        key: output.key,
+        isOnArray: false,
+      });
+      return this.demuxerAction(output.uid, demuxer.inputRef, demuxerActionCode);
+    });
+  }
+
+  demuxerAction(uid: string, inputRef: string, body: string) {
+    return {
+      type: 'action',
+      uid: uid,
+      name: 'demuxer_action_' + uid,
+      parameters: [
+        {name: 'data', valueRef: inputRef }
+      ],
+      body: body,
+    };
   }
 
   processSignal(signal: VRAC.Signal): string {
@@ -118,7 +138,8 @@ class Renderer {
         return signal.streamName = this.processConstant(<VRAC.Constant>signal);
       case 'placeholder':
       case 'element':
-      case 'demuxer':
+      case 'arrayDemuxer':
+      case 'objectDemuxer':
         return signal.streamName = ''; // Placholder, Element and Demuxer don't have their own JavaScript code
       default:
         throw 'Unknown signal type: "' + signal.type + '"';

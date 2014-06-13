@@ -60,14 +60,13 @@
       "name": "class:completed"
     },
     "WZQ9KTF6KP9X64CW": {
-      "type": "demuxer",
+      "type": "arrayDemuxer",
       "uid": "WZQ9KTF6KP9X64CW",
       "inputRef": "AMENFLFNMJT97FLQ",
       "outputs": [
         {"uid": "JQXGSDQVCU25M60S", "key": "title"},
         {"uid": "ACR49CR4PN6CM2C9", "key": "completed"}
-      ],
-      "isOnArray": true
+      ]
     },
 
     "AMENFLFNMJT97FLQ": {
