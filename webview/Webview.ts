@@ -22,6 +22,11 @@ class Webview {
 
   static init() {
     Webview.widget = $('body').children()[0];
+    var collection = document.querySelector('[vrac-collection]');
+    var viewTemplate = document.querySelector('template[vrac-view]');
+    var view = viewTemplate['content'].cloneNode(true);
+    collection.appendChild(view);
+
     Webview.elements = $('[id^=VRAC],[class^=VRAC]').toArray();
   }
 
