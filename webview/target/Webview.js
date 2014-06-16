@@ -23,8 +23,6 @@ var Webview = (function () {
             collection.appendChild(view);
         }
 
-        $('head').append('<link rel="stylesheet" href="css/Webview.css"/>');
-
         Webview.elements = $('[id^=VRAC],[class^=VRAC]').toArray();
     };
 

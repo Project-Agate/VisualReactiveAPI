@@ -337,6 +337,8 @@ Please check following files:
 
 Just run [jquery.min.js](webview/lib/jquery.min.js) and [Webview.js](webview/target/Webview.js) in Webview context after loading user-defined widget.
 
+Remember to load [Webview.css](webview/css/Webview.css) to make placeholder appear.
+
 ## Function
 
 `var Webview = VRAC.Webview`
