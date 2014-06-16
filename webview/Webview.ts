@@ -10,6 +10,7 @@ interface ElementDetail {
   uid: string;
   events: string[];
   attributes: string[];
+  isPlaceholder: boolean;
 }
 
 class Webview {
@@ -42,6 +43,7 @@ class Webview {
   static elementDetailFromElement(element: Element): ElementDetail {
     return element ? {
       uid: Webview.findUID(element),
+      isPlaceholder: $(element).attr("vrac-placeholder") !== undefined ? true : false,
       events: ['click', 'change', 'keypress'],
       attributes: ['value', 'innerHTML'],
     } : null; 

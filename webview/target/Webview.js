@@ -36,6 +36,7 @@ var Webview = (function () {
     Webview.elementDetailFromElement = function (element) {
         return element ? {
             uid: Webview.findUID(element),
+            isPlaceholder: $(element).attr("vrac-placeholder") !== undefined ? true : false,
             events: ['click', 'change', 'keypress'],
             attributes: ['value', 'innerHTML']
         } : null;
